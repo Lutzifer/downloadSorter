@@ -99,7 +99,8 @@ class SortManager {
         return mutableFileList.filter({ (fileName) -> Bool in
             // filter running downloads for chrome, opera and safari
             if let fileExtension = NSURL(fileURLWithPath: fileName).pathExtension {
-                return !["crdownload", "download", "opdownload"].contains(fileExtension)
+                // Safari .download files are actually folders, so they are ignored anyway
+                return !["crdownload", "opdownload"].contains(fileExtension)
             } else {
                 return false
             }
@@ -118,12 +119,16 @@ class SortManager {
         for file in cleanFileList {
             let whereFroms : Array<AnyObject>? = AttributeExtractor.getWhereFromForPath(file)
             
-            if(whereFroms != nil) {
                 let fileManager = NSFileManager.defaultManager()
-                
-                let extractedFolder = extractTargetFolder(whereFroms!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                let targetFolder = "\(targetPath)/\(extractedFolder)"
-                    
+            
+                var targetFolder : String
+            
+                if(whereFroms != nil) {
+                    let extractedFolder = extractTargetFolder(whereFroms!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    targetFolder = "\(targetPath)/\(extractedFolder)"
+                } else {
+                    targetFolder = "Unknown Source"
+                }
                 
                 if(!fileManager.fileExistsAtPath(targetFolder)){
                     let directoryOperation = MakeDirectoriesOperation()
@@ -141,7 +146,7 @@ class SortManager {
                 
                 operationList.append(moveOperation)
             }
-        }
+
         
         var result  = ""
         for fileOperation in operationList {
