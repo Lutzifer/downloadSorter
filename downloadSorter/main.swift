@@ -10,7 +10,7 @@ import Foundation
 
 let cli = CommandLine()
 
-let sourcePath = StringOption(shortFlag: "s", longFlag: "sourcepath", required: true,
+let sourcePath = StringOption(shortFlag: "s", longFlag: "sourcepath", required: false,
     helpMessage: "Path to the Folder which contains the files to process.")
 let destinationPath = StringOption(shortFlag: "t", longFlag: "targetpath",
     helpMessage: "Path to the Folder which where the files are processed to. If not given, the sourcepath is used.")
@@ -28,13 +28,34 @@ do {
     exit(EX_USAGE)
 }
 
-// Sourcepath is required, so this should always work
+if (sourcePath.value == nil) {
+    sourcePath.setValue(["."])
+}
+
 if let sourcePathString = sourcePath.value {
-    SortManager.sharedInstance.sourceFolder = sourcePathString
-    if let destinationPathString = destinationPath.value {
-        SortManager.sharedInstance.targetFolder = destinationPathString
+    var absoluteSourcePath : String
+
+    if (sourcePathString == ".") {
+        absoluteSourcePath = NSFileManager.defaultManager().currentDirectoryPath
     } else {
-        SortManager.sharedInstance.targetFolder = sourcePathString
+        absoluteSourcePath = sourcePathString
+    }
+    
+    SortManager.sharedInstance.sourceFolder = absoluteSourcePath
+
+    if let destinationPathString = destinationPath.value {
+        var absoluteDestinationPath : String
+        
+        if (destinationPathString == ".") {
+            absoluteDestinationPath = NSFileManager.defaultManager().currentDirectoryPath
+        } else {
+            absoluteDestinationPath = destinationPathString
+        }
+
+        
+        SortManager.sharedInstance.targetFolder = absoluteDestinationPath
+    } else {
+        SortManager.sharedInstance.targetFolder = absoluteSourcePath
     }
 }
 
