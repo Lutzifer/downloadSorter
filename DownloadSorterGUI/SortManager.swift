@@ -16,6 +16,8 @@ class SortManager {
     var sourceFolder = ""
     var targetFolder = ""
     
+    var urlDepth = 0
+    
     func getListOfFilesInFolder(path: String) -> Array<String> {
         let fileManager = NSFileManager.defaultManager()
         var error: NSError?
@@ -50,15 +52,24 @@ class SortManager {
         let isFTP : NSPredicate = NSPredicate(format: "SELF MATCHES '^ftps?://.*'")
         let isEmail : NSPredicate = NSPredicate(format: "SELF MATCHES '.*<.*@.*>.*'")
         
-        
-        
         if( isHTTP.evaluateWithObject(input.first as! String) || isFTP.evaluateWithObject(input.first as! String) ){
             // get Host
-            // Take Last Field (Original URL) for this
             for result in Array(input.reverse()) {
                 var resultArray = (result as! String).componentsSeparatedByString("/")
+
                 if(resultArray.count > 2) {
-                    return resultArray[2]
+                    var resultString : String = ""
+
+                    // if URLDepth is set to value larger then 0, limit depth of hosts
+                    if(self.urlDepth > 0) {
+                        resultString = getLast(resultArray[2].splitByCharacter("."), count: self.urlDepth).joinWithSeparator(".")
+                    } else {
+                        resultString = resultArray[2]
+                    }
+                    
+                    if(resultString != ""){
+                        return resultString
+                    }
                 }
             }
             
@@ -179,4 +190,14 @@ class SortManager {
         }
         return "undone";
     }
+
+    // http://stackoverflow.com/questions/31007643/in-swift-whats-the-cleanest-way-to-get-the-last-two-items-in-an-array
+    func getLast<T>(array: [T], count: Int) -> [T] {
+        if count >= array.count {
+            return array
+        }
+        let first = array.count - count
+        return Array(array[first..<first+count])
+    }
+
 }
