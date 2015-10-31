@@ -58,13 +58,33 @@ class SortManager {
                 var resultArray = (result as! String).componentsSeparatedByString("/")
 
                 if(resultArray.count > 2) {
-                    var resultString : String = ""
-
+                    var resultString : String = resultArray[2]
+                    
                     // if URLDepth is set to value larger then 0, limit depth of hosts
                     if(self.urlDepth > 0) {
-                        resultString = getLast(resultArray[2].splitByCharacter("."), count: self.urlDepth).joinWithSeparator(".")
-                    } else {
-                        resultString = resultArray[2]
+                        var suffix : String?
+
+                        // replace multipart TLD with a singlePartTLD
+                        for tld in TLDList.multiPartTLDs() {
+                            if resultString.hasSuffix(".\(tld)") {
+                                suffix = tld
+                                let suffixLength = suffix!.characters.count + 1// (+1 to include dot)
+                                let endIndex = resultString.endIndex.advancedBy(-suffixLength)
+                                resultString = [resultString.substringWithRange(Range<String.Index>(start: resultString.startIndex, end: endIndex)), "suffix"].joinWithSeparator(".")
+                                break
+                            }
+                        }
+                        
+                        resultString = getLast(resultString.splitByCharacter("."), count: self.urlDepth).joinWithSeparator(".")
+                        
+                        // replace singlepart TLD with multipart TLD
+                        if let realSuffix = suffix {
+                            var strings = resultString.splitByCharacter(".")
+                            strings.removeLast()
+                            strings.append(realSuffix)
+                            resultString = strings.joinWithSeparator(".")
+                        }
+                        
                     }
                     
                     if(resultString != ""){

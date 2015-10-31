@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		849BA6941BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
+		849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
 		93285BFC1BC2F80B00E9B88D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93285BFB1BC2F80B00E9B88D /* main.swift */; };
-		93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E11AEFFEEC00BCD362 /* FileOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */; settings = {ASSET_TAGS = (); }; };
-		937110811BC3104200D9E418 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107B1BC3104200D9E418 /* CommandLine.swift */; settings = {ASSET_TAGS = (); }; };
-		937110821BC3104200D9E418 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107E1BC3104200D9E418 /* Option.swift */; settings = {ASSET_TAGS = (); }; };
-		937110831BC3104200D9E418 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9371107F1BC3104200D9E418 /* README.md */; settings = {ASSET_TAGS = (); }; };
-		937110841BC3104200D9E418 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937110801BC3104200D9E418 /* StringExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904D81AEFFB5D00BCD362 /* SortManager.swift */; settings = {ASSET_TAGS = (); }; };
+		93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */; };
+		93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E11AEFFEEC00BCD362 /* FileOperation.swift */; };
+		93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */; };
+		93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */; };
+		937110811BC3104200D9E418 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107B1BC3104200D9E418 /* CommandLine.swift */; };
+		937110821BC3104200D9E418 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107E1BC3104200D9E418 /* Option.swift */; };
+		937110831BC3104200D9E418 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9371107F1BC3104200D9E418 /* README.md */; };
+		937110841BC3104200D9E418 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937110801BC3104200D9E418 /* StringExtensions.swift */; };
+		9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904D81AEFFB5D00BCD362 /* SortManager.swift */; };
 		93B904BC1AEFFB2100BCD362 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904BB1AEFFB2100BCD362 /* AppDelegate.swift */; };
 		93B904BE1AEFFB2100BCD362 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904BD1AEFFB2100BCD362 /* ViewController.swift */; };
 		93B904C01AEFFB2100BCD362 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B904BF1AEFFB2100BCD362 /* Images.xcassets */; };
@@ -52,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		849BA6931BE51DC5001B3CE5 /* TLDList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDList.swift; sourceTree = "<group>"; };
 		93285BF91BC2F80B00E9B88D /* downloadSorter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = downloadSorter; sourceTree = BUILT_PRODUCTS_DIR; };
 		93285BFB1BC2F80B00E9B88D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9371107B1BC3104200D9E418 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 				93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */,
 				93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */,
 				93B904D81AEFFB5D00BCD362 /* SortManager.swift */,
+				849BA6931BE51DC5001B3CE5 /* TLDList.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -338,6 +342,7 @@
 				93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */,
 				9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */,
 				937110831BC3104200D9E418 /* README.md in Sources */,
+				849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */,
 				937110811BC3104200D9E418 /* CommandLine.swift in Sources */,
 				93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */,
 			);
@@ -347,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849BA6941BE51DC5001B3CE5 /* TLDList.swift in Sources */,
 				93B904E31AEFFEEC00BCD362 /* MoveOperation.swift in Sources */,
 				93B904BE1AEFFB2100BCD362 /* ViewController.swift in Sources */,
 				93B904BC1AEFFB2100BCD362 /* AppDelegate.swift in Sources */,
