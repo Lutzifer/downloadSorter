@@ -193,6 +193,10 @@ class SortManager {
             result = result + "\n" + fileOperation.describe()
         }
         
+        if(result == "") {
+            result =  "Nothing to do"
+        }
+        
         return result
         
     }
@@ -207,8 +211,11 @@ class SortManager {
                 }
             }
         }
-
-        return "done";
+        if(operationList.count > 0) {
+            return "done";
+        } else {
+            return "";
+        }
     }
     
     func undoOperations() -> String {
@@ -217,7 +224,12 @@ class SortManager {
                 fileOperation.undoOperation()
             }
         }
-        return "undone";
+        
+        if(operationList.count > 0) {
+            return "undone";
+        } else {
+            return "";
+        }
     }
 
     // http://stackoverflow.com/questions/31007643/in-swift-whats-the-cleanest-way-to-get-the-last-two-items-in-an-array
