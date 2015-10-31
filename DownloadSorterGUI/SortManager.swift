@@ -145,7 +145,16 @@ class SortManager {
         // Reset Operation List
         self.operationList = Array<FileOperation>()
         
-        let cleanFileList = filterRunningDownloads(getListOfFilesInFolder(sourcePath))
+        var cleanFileList : Array<String> = filterRunningDownloads(getListOfFilesInFolder(sourcePath))
+        
+        // Filter dot files
+        cleanFileList = cleanFileList.filter({ (filePath : String) -> Bool in
+            if let fileName = NSURL(fileURLWithPath: filePath).lastPathComponent {
+                return !fileName.hasPrefix(".")
+            } else {
+                return false
+            }
+        })
         
         for file in cleanFileList {
             let whereFroms : Array<AnyObject>? = AttributeExtractor.getWhereFromForPath(file)
