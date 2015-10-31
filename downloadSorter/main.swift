@@ -31,6 +31,11 @@ do {
     exit(EX_USAGE)
 }
 
+if (help.value) {
+    cli.printUsage()
+    exit(0)
+}
+
 if (sourcePath.value == nil) {
     sourcePath.setValue(["."])
 }
