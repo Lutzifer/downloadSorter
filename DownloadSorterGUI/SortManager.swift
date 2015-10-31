@@ -71,6 +71,41 @@ class SortManager {
         }
     }
     
+    func filterRunningDownloads(fileList: Array<String>) -> Array<String> {
+        // filter running Firefox downloads, which consist of the original file and the original file with extension ".part"
+        
+        let partFiles = fileList.filter { (fileName) -> Bool in
+            if let fileExtension = NSURL(fileURLWithPath: fileName).pathExtension {
+                return fileExtension == "part"
+            } else {
+                return false
+            }
+        }
+        
+        var mutableFileList = fileList
+        
+        for partFile in partFiles {
+            if let fileName = NSURL(fileURLWithPath: partFile).URLByDeletingPathExtension?.path,
+                let partFileIndex = fileList.indexOf(partFile),
+                let fileIndex = fileList.indexOf(fileName) {
+                    let reverseIndices = [partFileIndex, fileIndex].sort{$0 > $1}
+
+                    for index in reverseIndices {
+                        mutableFileList.removeAtIndex(index)
+                    }
+            }
+        }
+        
+        return mutableFileList.filter({ (fileName) -> Bool in
+            // filter running downloads for chrome, opera and safari
+            if let fileExtension = NSURL(fileURLWithPath: fileName).pathExtension {
+                return !["crdownload", "download", "opdownload"].contains(fileExtension)
+            } else {
+                return false
+            }
+        })
+    }
+    
     func analyze() -> String {
         let sourcePath = self.sourceFolder
         let targetPath = self.targetFolder
@@ -78,7 +113,9 @@ class SortManager {
         // Reset Operation List
         self.operationList = Array<FileOperation>()
         
-        for file in getListOfFilesInFolder(sourcePath) {
+        let cleanFileList = filterRunningDownloads(getListOfFilesInFolder(sourcePath))
+        
+        for file in cleanFileList {
             let whereFroms : Array<AnyObject>? = AttributeExtractor.getWhereFromForPath(file)
             
             if(whereFroms != nil) {
