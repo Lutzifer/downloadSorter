@@ -15,11 +15,11 @@ class MoveOperation : FileOperation {
     var targetFileName : String = ""
     
     func sourcePath() -> String {
-        return "\(sourceFolder)\(sourceFileName)"
+        return NSString.pathWithComponents([sourceFolder, sourceFileName])
     }
     
     func targetPath() -> String {
-        return "\(targetFolder)\(targetFileName)"
+        return NSString.pathWithComponents([targetFolder, targetFileName])
     }
     
     override func describe() -> String {
@@ -31,7 +31,19 @@ class MoveOperation : FileOperation {
         
         // Add .2 to the name until it is unique
         while(fileManager.fileExistsAtPath(targetPath())){
-            targetFileName = "\(NSURL(fileURLWithPath: targetPath()).URLByDeletingLastPathComponent?.absoluteString).2.\(NSURL(fileURLWithPath: targetPath()).pathExtension)"
+            let fileExtension = NSURL(fileURLWithPath: targetPath()).pathExtension
+            let fileName = NSURL(fileURLWithPath: targetPath()).URLByDeletingPathExtension?.lastPathComponent
+            guard (fileName != nil) else {
+                self.state = OperationState.failed
+                return false
+            }
+            
+            guard (fileExtension != nil) else {
+                self.state = OperationState.failed
+                return false
+            }
+        
+            targetFileName = "\(fileName!).2.\(fileExtension!)"
         }
         
         do {
