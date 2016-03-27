@@ -16,7 +16,7 @@
  */
 
 /* Required for setlocale(3) */
-@exported import Darwin
+import Darwin
 
 let ShortOptionPrefix = "-"
 let LongOptionPrefix = "--"
@@ -104,7 +104,7 @@ public class CommandLine {
       args.append(attachedArg[1])
     }
     
-    for var i = flagIndex + 1; i < _arguments.count; i++ {
+    for i in flagIndex + 1 ..< _arguments.count {
       if !skipFlagChecks {
         if _arguments[i] == ArgumentStopper {
           skipFlagChecks = true
@@ -186,7 +186,7 @@ public class CommandLine {
       
       let skipChars = arg.hasPrefix(LongOptionPrefix) ?
         LongOptionPrefix.characters.count : ShortOptionPrefix.characters.count
-      let flagWithArg = arg[Range(start: arg.startIndex.advancedBy(skipChars), end: arg.endIndex)]
+      let flagWithArg = arg[arg.startIndex.advancedBy(skipChars)..<arg.endIndex]
       
       /* The argument contained nothing but ShortOptionPrefix or LongOptionPrefix */
       if flagWithArg.isEmpty {

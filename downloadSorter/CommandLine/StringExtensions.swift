@@ -87,17 +87,20 @@ internal extension String {
     var numSplits = 0
     
     var curIdx = self.startIndex
-    for(var i = self.startIndex; i != self.endIndex; i = i.successor()) {
+    var i = self.startIndex;
+    
+    while(i != self.endIndex) {
       let c = self[i]
       if c == splitBy && (maxSplits == 0 || numSplits < maxSplits) {
-        s.append(self[Range(start: curIdx, end: i)])
+        s.append(self[curIdx ..< i])
         curIdx = i.successor()
-        numSplits++
+        numSplits += 1
       }
+      i = i.successor()
     }
     
     if curIdx != self.endIndex {
-      s.append(self[Range(start: curIdx, end: self.endIndex)])
+      s.append(self[curIdx..<self.endIndex])
     }
     
     return s
@@ -115,8 +118,9 @@ internal extension String {
     var s = self
     var currentLength = self.characters.count
     
-    while currentLength++ < width {
+    while (currentLength < width) {
       s.append(padBy)
+      currentLength += 1
     }
     
     return s

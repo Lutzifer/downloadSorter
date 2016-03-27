@@ -16,7 +16,6 @@
 		93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */; };
 		937110811BC3104200D9E418 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107B1BC3104200D9E418 /* CommandLine.swift */; };
 		937110821BC3104200D9E418 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107E1BC3104200D9E418 /* Option.swift */; };
-		937110831BC3104200D9E418 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9371107F1BC3104200D9E418 /* README.md */; };
 		937110841BC3104200D9E418 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937110801BC3104200D9E418 /* StringExtensions.swift */; };
 		9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904D81AEFFB5D00BCD362 /* SortManager.swift */; };
 		93B904BC1AEFFB2100BCD362 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904BB1AEFFB2100BCD362 /* AppDelegate.swift */; };
@@ -341,7 +340,6 @@
 				93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */,
 				93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */,
 				9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */,
-				937110831BC3104200D9E418 /* README.md in Sources */,
 				849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */,
 				937110811BC3104200D9E418 /* CommandLine.swift in Sources */,
 				93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */,
