@@ -70,7 +70,7 @@ class SortManager {
                                 suffix = tld
                                 let suffixLength = suffix!.characters.count + 1// (+1 to include dot)
                                 let endIndex = resultString.endIndex.advancedBy(-suffixLength)
-                                resultString = [resultString.substringWithRange(Range<String.Index>(start: resultString.startIndex, end: endIndex)), "suffix"].joinWithSeparator(".")
+                                resultString = [resultString.substringWithRange(resultString.startIndex..<endIndex), "suffix"].joinWithSeparator(".")
                                 break
                             }
                         }
