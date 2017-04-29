@@ -146,34 +146,35 @@ class SortManager {
 		})
 
 		for file in cleanFileList {
-			let whereFroms: [AnyObject]? = AttributeExtractor.getWhereFrom(forPath: file)! as [AnyObject]
+			if let whereFroms = AttributeExtractor.getWhereFrom(forPath: file) as [AnyObject]? {
 
-			let fileManager = FileManager.default
+				let fileManager = FileManager.default
 
-			var targetFolder: String
+				var targetFolder: String
 
-			if whereFroms != nil {
-				let extractedFolder = extractTargetFolder(whereFroms!).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-				targetFolder = "\(targetPath)/\(extractedFolder)"
-			} else {
-				targetFolder = "Unknown Source"
+				if whereFroms.isEmpty {
+					targetFolder = "Unknown Source"
+				} else {
+					let extractedFolder = extractTargetFolder(whereFroms).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+					targetFolder = "\(targetPath)/\(extractedFolder)"
+				}
+
+				if !fileManager.fileExists(atPath: targetFolder) {
+					let directoryOperation = MakeDirectoriesOperation()
+					directoryOperation.directoryPath = targetFolder
+					operationList.append(directoryOperation)
+				}
+
+				let moveOperation = MoveOperation()
+				let fileName = file.replacingOccurrences(of: sourcePath, with: "", options: [], range: nil)
+
+				moveOperation.sourceFolder = sourcePath
+				moveOperation.sourceFileName = fileName
+				moveOperation.targetFolder = targetFolder
+				moveOperation.targetFileName = fileName
+
+				operationList.append(moveOperation)
 			}
-
-			if !fileManager.fileExists(atPath: targetFolder) {
-				let directoryOperation = MakeDirectoriesOperation()
-				directoryOperation.directoryPath = targetFolder
-				operationList.append(directoryOperation)
-			}
-
-			let moveOperation = MoveOperation()
-			let fileName = file.replacingOccurrences(of: sourcePath, with: "", options: [], range: nil)
-
-			moveOperation.sourceFolder = sourcePath
-			moveOperation.sourceFileName = fileName
-			moveOperation.targetFolder = targetFolder
-			moveOperation.targetFileName = fileName
-
-			operationList.append(moveOperation)
 		}
 
 		var result = ""
