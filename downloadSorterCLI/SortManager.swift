@@ -9,13 +9,13 @@
 import Foundation
 
 class SortManager {
-	static let sharedInstance = SortManager()
-	var operationList = [FileOperation]()
+	static let sharedInstance: SortManager = SortManager()
+	var operationList: [FileOperation] = [FileOperation]()
 
-	var sourceFolder = ""
-	var targetFolder = ""
+	var sourceFolder: String = ""
+	var targetFolder: String = ""
 
-	var urlDepth = 0
+	var urlDepth: Int = 0
 
 	func getListOfFilesInFolder(_ path: String) -> [String] {
 		let fileManager = FileManager.default
