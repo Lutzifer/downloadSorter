@@ -1,3 +1,4 @@
+//swiftlint:disable file_length
 //
 //  TLDList.swift
 //  DownloadSorter
@@ -12,7 +13,10 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
+
+//swiftlint:disable:next type_body_length
 class TLDList {
+	//swiftlint:disable:next function_body_length
 	class func multiPartTLDs() -> [String] {
 		return [
 			"com.ac",
