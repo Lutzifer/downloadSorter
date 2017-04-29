@@ -75,7 +75,7 @@ class SortManager {
 							}
 						}
 
-						resultString = getLast(resultString.components(separatedBy: "."), count: self.urlDepth).joined(separator: ".")
+						resultString = resultString.components(separatedBy: ".").suffix(self.urlDepth).joined(separator: ".")
 
 						// replace singlepart TLD with multipart TLD
 						if let realSuffix = suffix {
@@ -220,15 +220,6 @@ class SortManager {
 		} else {
 			return ""
 		}
-	}
-
-	// http://stackoverflow.com/questions/31007643/in-swift-whats-the-cleanest-way-to-get-the-last-two-items-in-an-array
-	func getLast<T>(_ array: [T], count: Int) -> [T] {
-		if count >= array.count {
-			return array
-		}
-		let first = array.count - count
-		return Array(array[first..<first + count])
 	}
 
 }
