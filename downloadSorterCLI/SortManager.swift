@@ -8,7 +8,14 @@
 
 import Foundation
 
+enum KindDetectorRegex: String {
+	case https = "^https?://.*"
+	case ftps = "^ftps?://.*"
+	case email = ".*<.*@.*>.*"
+}
+
 class SortManager {
+
 	static let sharedInstance: SortManager = SortManager()
 	var operationList: [FileOperation] = [FileOperation]()
 
@@ -47,11 +54,11 @@ class SortManager {
 	}
 
 	func extractTargetFolder(_ input: [String]) -> String? {
-		let isHTTP: NSPredicate = NSPredicate(format: "SELF MATCHES '^https?://.*'")
-		let isFTP: NSPredicate = NSPredicate(format: "SELF MATCHES '^ftps?://.*'")
-		let isEmail: NSPredicate = NSPredicate(format: "SELF MATCHES '.*<.*@.*>.*'")
+		guard let first = input.first, let last = input.last else {
+			return nil
+		}
 
-		if isHTTP.evaluate(with: input.first) || isFTP.evaluate(with: input.first) {
+		if first.matchesRegex(.https) || first.matchesRegex(.ftps) {
 			// get Host
 			for result in Array(input.reversed()) {
 				var resultArray = result.components(separatedBy: "/")
@@ -94,11 +101,11 @@ class SortManager {
 			}
 
 			return ""
-		} else if isEmail.evaluate(with: input.first) {
+		} else if first.matchesRegex(.email) {
 			// Take first field (Full Name) for this
-			return input.first?.components(separatedBy: "<")[0]
+			return first.components(separatedBy: "<")[0]
 		} else {
-			return input.last
+			return last
 		}
 	}
 
@@ -222,4 +229,11 @@ class SortManager {
 		}
 	}
 
+}
+
+extension String {
+	func matchesRegex(_ regex: KindDetectorRegex) -> Bool {
+		let predicate: NSPredicate = NSPredicate(format: "SELF MATCHES '\(regex)'")
+		return predicate.evaluate(with: self)
+	}
 }
