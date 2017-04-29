@@ -10,16 +10,24 @@ import Foundation
 
 let cli = CommandLine()
 
-let sourcePath = StringOption(shortFlag: "s", longFlag: "sourcepath",
+let sourcePath = StringOption(shortFlag: "s",
+                              longFlag: "sourcepath",
                               helpMessage: "Path to the Folder which contains the files to process.")
-let destinationPath = StringOption(shortFlag: "t", longFlag: "targetpath",
-                                   helpMessage: "Path to the Folder which where the files are processed to. If not given, the sourcepath is used.")
-let help = BoolOption(shortFlag: "h", longFlag: "help",
+let destinationPath = StringOption(shortFlag: "t",
+                                   longFlag: "targetpath",
+                                   helpMessage: "Path to the Folder which where the files are processed to. "
+	                                   + "If not given, the sourcepath is used.")
+let help = BoolOption(shortFlag: "h",
+                      longFlag: "help",
                       helpMessage: "Prints a help message.")
-let dryrun = BoolOption(shortFlag: "d", longFlag: "dry-run",
+let dryrun = BoolOption(shortFlag: "d",
+                        longFlag: "dry-run",
                         helpMessage: "Print what will happen instead of doing it.")
-let urlDepth = IntOption(shortFlag: "u", longFlag: "urldepth",
-                         helpMessage: "Limits the depth of urls. A value of 2 would shorten www.example.com to example.com. Default is 0 (no limit). Negative values are interpreted as 0.")
+let urlDepth = IntOption(shortFlag: "u",
+                         longFlag: "urldepth",
+                         helpMessage: "Limits the depth of urls. "
+	                         + "A value of 2 would shorten www.example.com to example.com. "
+	                         + "Default is 0 (no limit). Negative values are interpreted as 0.")
 
 cli.addOptions(sourcePath, destinationPath, help, dryrun, urlDepth)
 

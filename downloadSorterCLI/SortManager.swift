@@ -69,7 +69,8 @@ class SortManager {
 								suffix = tld
 								let suffixLength = suffix!.characters.count + 1// (+1 to include dot)
 								let endIndex = resultString.characters.index(resultString.endIndex, offsetBy: -suffixLength)
-								resultString = [resultString.substring(with: resultString.startIndex..<endIndex), "suffix"].joined(separator: ".")
+								let prefix = resultString.substring(with: resultString.startIndex..<endIndex)
+								resultString = [prefix, "suffix"].joined(separator: ".")
 								break
 							}
 						}
@@ -152,8 +153,10 @@ class SortManager {
 
 				var targetFolder: String
 
-				if !whereFroms.isEmpty, let extractedFolder = extractTargetFolder(whereFroms)?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
-					targetFolder = "\(targetPath)/\(extractedFolder)"
+				if !whereFroms.isEmpty,
+					let extractedFolder = extractTargetFolder(whereFroms) {
+					let trimmedExtractedFolder = extractedFolder.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+					targetFolder = "\(targetPath)/\(trimmedExtractedFolder)"
 				} else {
 					targetFolder = "Unknown Source"
 				}
