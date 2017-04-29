@@ -36,7 +36,7 @@ let ArgumentStopper = "--"
 let ArgumentAttacher: Character = "="
 
 /* An output stream to stderr; used by CommandLine.printUsage(). */
-private struct StderrOutputStream: OutputStreamType {
+private struct StderrOutputStream: TextOutputStream {
   static let stream = StderrOutputStream()
   func write(s: String) {
     fputs(s, stderr)
@@ -129,7 +129,7 @@ public class CommandLine {
    */
   public var maxFlagDescriptionWidth: Int {
     if _maxFlagDescriptionWidth == 0 {
-      _maxFlagDescriptionWidth = _options.map { $0.flagDescription.characters.count }.sort().first ?? 0
+      _maxFlagDescriptionWidth = _options.map { $0.flagDescription.characters.count }.sorted().first ?? 0
     }
 
     return _maxFlagDescriptionWidth
@@ -155,7 +155,7 @@ public class CommandLine {
   }
 
   /** A ParseError is thrown if the `parse()` method fails. */
-  public enum ParseError: ErrorType, CustomStringConvertible {
+  public enum ParseError: Error, CustomStringConvertible {
     /** Thrown if an unrecognized argument is passed to `parse()` in strict mode */
     case InvalidArgument(String)
 
@@ -170,7 +170,7 @@ public class CommandLine {
       case let .InvalidArgument(arg):
         return "Invalid argument: \(arg)"
       case let .InvalidValueForOption(opt, vals):
-        let vs = vals.joinWithSeparator(", ")
+        let vs = vals.joined(separator: ", ")
         return "Invalid value(s) for option \(opt.flagDescription): \(vs)"
       case let .MissingRequiredOptions(opts):
         return "Missing required options: \(opts.map { return $0.flagDescription })"
@@ -295,7 +295,7 @@ public class CommandLine {
     /* Nuke executable name */
     strays[0] = ""
 
-    for (idx, arg) in _arguments.enumerate() {
+    for (idx, arg) in _arguments.enumerated() {
       if arg == ArgumentStopper {
         break
       }
@@ -406,16 +406,16 @@ public class CommandLine {
    * 
    * - parameter to: An OutputStreamType to write the error message to.
    */
-  public func printUsage<TargetStream: OutputStreamType>(inout to: TargetStream) {
+  public func printUsage<TargetStream: TextOutputStream>(to: inout TargetStream) {
     /* Nil coalescing operator (??) doesn't work on closures :( */
     let format = formatOutput != nil ? formatOutput! : defaultFormat
 
     let name = _arguments[0]
-    print(format("Usage: \(name) [options]", .About), terminator: "", toStream: &to)
+    print(format("Usage: \(name) [options]", .About), terminator: "", to: &to)
 
     for opt in _options {
-      print(format(opt.flagDescription, .OptionFlag), terminator: "", toStream: &to)
-      print(format(opt.helpMessage, .OptionHelp), terminator: "", toStream: &to)
+      print(format(opt.flagDescription, .OptionFlag), terminator: "", to: &to)
+      print(format(opt.helpMessage, .OptionHelp), terminator: "", to: &to)
     }
   }
   
@@ -426,9 +426,9 @@ public class CommandLine {
    *   (e.g. "Missing required option --extract") will be printed before the usage message.
    * - parameter to: An OutputStreamType to write the error message to.
    */
-  public func printUsage<TargetStream: OutputStreamType>(error: ErrorType, inout to: TargetStream) {
+  public func printUsage<TargetStream: TextOutputStream>(error: Error, to: inout TargetStream) {
     let format = formatOutput != nil ? formatOutput! : defaultFormat
-    print(format("\(error)", .Error), terminator: "", toStream: &to)
+    print(format("\(error)", .Error), terminator: "", to: &to)
     printUsage(&to)
   }
   
@@ -438,7 +438,7 @@ public class CommandLine {
    * - parameter error: An error thrown from `parse()`. A description of the error
    *   (e.g. "Missing required option --extract") will be printed before the usage message.
    */
-  public func printUsage(error: ErrorType) {
+  public func printUsage(error: Error) {
     var out = StderrOutputStream.stream
     printUsage(error, to: &out)
   }

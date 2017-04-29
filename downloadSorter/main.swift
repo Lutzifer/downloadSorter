@@ -44,7 +44,7 @@ if let sourcePathString = sourcePath.value {
     var absoluteSourcePath : String
 
     if (sourcePathString == ".") {
-        absoluteSourcePath = NSFileManager.defaultManager().currentDirectoryPath
+        absoluteSourcePath = FileManager.default.currentDirectoryPath
     } else {
         absoluteSourcePath = sourcePathString
     }
@@ -55,7 +55,7 @@ if let sourcePathString = sourcePath.value {
         var absoluteDestinationPath : String
         
         if (destinationPathString == ".") {
-            absoluteDestinationPath = NSFileManager.defaultManager().currentDirectoryPath
+            absoluteDestinationPath = FileManager.default.currentDirectoryPath
         } else {
             absoluteDestinationPath = destinationPathString
         }

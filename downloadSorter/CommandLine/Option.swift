@@ -33,11 +33,11 @@ public class Option {
 
   public var flagDescription: String {
     switch (shortFlag, longFlag) {
-    case let (.Some(sf), .Some(lf)):
+    case let (.some(sf), .some(lf)):
       return "\(ShortOptionPrefix)\(sf), \(LongOptionPrefix)\(lf)"
-    case (.None, let .Some(lf)):
+    case (.none, let .some(lf)):
       return "\(LongOptionPrefix)\(lf)"
-    case (let .Some(sf), .None):
+    case (let .some(sf), .none):
       return "\(ShortOptionPrefix)\(sf)"
     default:
       return ""
@@ -251,7 +251,7 @@ public class MultiStringOption: Option {
 }
 
 /** An option that represents an enum value. */
-public class EnumOption<T:RawRepresentable where T.RawValue == String>: Option {
+public class EnumOption<T:RawRepresentable>: Option where T.RawValue == String {
   private var _value: T?
   public var value: T? {
     return _value

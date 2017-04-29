@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		849BA6941BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
 		849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
 		93285BFC1BC2F80B00E9B88D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93285BFB1BC2F80B00E9B88D /* main.swift */; };
 		93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */; };
@@ -18,27 +17,7 @@
 		937110821BC3104200D9E418 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107E1BC3104200D9E418 /* Option.swift */; };
 		937110841BC3104200D9E418 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937110801BC3104200D9E418 /* StringExtensions.swift */; };
 		9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904D81AEFFB5D00BCD362 /* SortManager.swift */; };
-		93B904BC1AEFFB2100BCD362 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904BB1AEFFB2100BCD362 /* AppDelegate.swift */; };
-		93B904BE1AEFFB2100BCD362 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904BD1AEFFB2100BCD362 /* ViewController.swift */; };
-		93B904C01AEFFB2100BCD362 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B904BF1AEFFB2100BCD362 /* Images.xcassets */; };
-		93B904C31AEFFB2100BCD362 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B904C11AEFFB2100BCD362 /* Main.storyboard */; };
-		93B904CF1AEFFB2100BCD362 /* DownloadSorterGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904CE1AEFFB2100BCD362 /* DownloadSorterGUITests.swift */; };
-		93B904D91AEFFB5D00BCD362 /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904D81AEFFB5D00BCD362 /* SortManager.swift */; };
-		93B904DE1AEFFEB500BCD362 /* AttributeExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */; };
-		93B904E31AEFFEEC00BCD362 /* MoveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */; };
-		93B904E41AEFFEEC00BCD362 /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E11AEFFEEC00BCD362 /* FileOperation.swift */; };
-		93B904E51AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		93B904C91AEFFB2100BCD362 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93B904AE1AEFFB2100BCD362 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 93B904B51AEFFB2100BCD362;
-			remoteInfo = DownloadSorterGUI;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		93285BF71BC2F80B00E9B88D /* CopyFiles */ = {
@@ -63,15 +42,7 @@
 		9371107F1BC3104200D9E418 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		937110801BC3104200D9E418 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DownloadSorter-Bridging-Header.h"; sourceTree = "<group>"; };
-		93B904B61AEFFB2100BCD362 /* DownloadSorter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownloadSorter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		93B904BA1AEFFB2100BCD362 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93B904BB1AEFFB2100BCD362 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		93B904BD1AEFFB2100BCD362 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		93B904BF1AEFFB2100BCD362 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		93B904C21AEFFB2100BCD362 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93B904C81AEFFB2100BCD362 /* DownloadSorter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownloadSorter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		93B904CD1AEFFB2100BCD362 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93B904CE1AEFFB2100BCD362 /* DownloadSorterGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSorterGUITests.swift; sourceTree = "<group>"; };
 		93B904D81AEFFB5D00BCD362 /* SortManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortManager.swift; path = DownloadSorterGUI/SortManager.swift; sourceTree = "<group>"; };
 		93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributeExtractor.h; path = DownloadSorterGUI/AttributeExtractor.h; sourceTree = "<group>"; };
 		93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributeExtractor.m; path = DownloadSorterGUI/AttributeExtractor.m; sourceTree = "<group>"; };
@@ -82,13 +53,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		93285BF61BC2F80B00E9B88D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		93B904B31AEFFB2100BCD362 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -145,9 +109,7 @@
 			children = (
 				9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */,
 				93285C001BC2F82F00E9B88D /* Common */,
-				93B904B81AEFFB2100BCD362 /* downloadSorterGUI */,
 				93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */,
-				93B904CB1AEFFB2100BCD362 /* DownloadSorterGUITests */,
 				93B904B71AEFFB2100BCD362 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,49 +117,10 @@
 		93B904B71AEFFB2100BCD362 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				93B904B61AEFFB2100BCD362 /* DownloadSorter.app */,
 				93B904C81AEFFB2100BCD362 /* DownloadSorter.xctest */,
 				93285BF91BC2F80B00E9B88D /* downloadSorter */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		93B904B81AEFFB2100BCD362 /* downloadSorterGUI */ = {
-			isa = PBXGroup;
-			children = (
-				93B904BB1AEFFB2100BCD362 /* AppDelegate.swift */,
-				93B904BD1AEFFB2100BCD362 /* ViewController.swift */,
-				93B904BF1AEFFB2100BCD362 /* Images.xcassets */,
-				93B904C11AEFFB2100BCD362 /* Main.storyboard */,
-				93B904B91AEFFB2100BCD362 /* Supporting Files */,
-			);
-			name = downloadSorterGUI;
-			path = DownloadSorterGUI;
-			sourceTree = "<group>";
-		};
-		93B904B91AEFFB2100BCD362 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				93B904BA1AEFFB2100BCD362 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		93B904CB1AEFFB2100BCD362 /* DownloadSorterGUITests */ = {
-			isa = PBXGroup;
-			children = (
-				93B904CE1AEFFB2100BCD362 /* DownloadSorterGUITests.swift */,
-				93B904CC1AEFFB2100BCD362 /* Supporting Files */,
-			);
-			path = DownloadSorterGUITests;
-			sourceTree = "<group>";
-		};
-		93B904CC1AEFFB2100BCD362 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				93B904CD1AEFFB2100BCD362 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		93B904DF1AEFFEDC00BCD362 /* FileOperations */ = {
@@ -231,23 +154,6 @@
 			productReference = 93285BF91BC2F80B00E9B88D /* downloadSorter */;
 			productType = "com.apple.product-type.tool";
 		};
-		93B904B51AEFFB2100BCD362 /* DownloadSorter */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 93B904D21AEFFB2100BCD362 /* Build configuration list for PBXNativeTarget "DownloadSorter" */;
-			buildPhases = (
-				93B904B21AEFFB2100BCD362 /* Sources */,
-				93B904B31AEFFB2100BCD362 /* Frameworks */,
-				93B904B41AEFFB2100BCD362 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DownloadSorter;
-			productName = DownloadSorterGUI;
-			productReference = 93B904B61AEFFB2100BCD362 /* DownloadSorter.app */;
-			productType = "com.apple.product-type.application";
-		};
 		93B904C71AEFFB2100BCD362 /* DownloadSorterTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B904D51AEFFB2100BCD362 /* Build configuration list for PBXNativeTarget "DownloadSorterTests" */;
@@ -259,7 +165,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				93B904CA1AEFFB2100BCD362 /* PBXTargetDependency */,
 			);
 			name = DownloadSorterTests;
 			productName = DownloadSorterGUITests;
@@ -274,17 +179,16 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Number 42";
 				TargetAttributes = {
 					93285BF81BC2F80B00E9B88D = {
 						CreatedOnToolsVersion = 7.0.1;
-					};
-					93B904B51AEFFB2100BCD362 = {
-						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0830;
 					};
 					93B904C71AEFFB2100BCD362 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 93B904B51AEFFB2100BCD362;
 					};
 				};
@@ -302,23 +206,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				93B904B51AEFFB2100BCD362 /* DownloadSorter */,
-				93B904C71AEFFB2100BCD362 /* DownloadSorterTests */,
 				93285BF81BC2F80B00E9B88D /* downloadSorter */,
+				93B904C71AEFFB2100BCD362 /* DownloadSorterTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		93B904B41AEFFB2100BCD362 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				93B904C01AEFFB2100BCD362 /* Images.xcassets in Resources */,
-				93B904C31AEFFB2100BCD362 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		93B904C61AEFFB2100BCD362 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,49 +240,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		93B904B21AEFFB2100BCD362 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				849BA6941BE51DC5001B3CE5 /* TLDList.swift in Sources */,
-				93B904E31AEFFEEC00BCD362 /* MoveOperation.swift in Sources */,
-				93B904BE1AEFFB2100BCD362 /* ViewController.swift in Sources */,
-				93B904BC1AEFFB2100BCD362 /* AppDelegate.swift in Sources */,
-				93B904D91AEFFB5D00BCD362 /* SortManager.swift in Sources */,
-				93B904E51AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift in Sources */,
-				93B904DE1AEFFEB500BCD362 /* AttributeExtractor.m in Sources */,
-				93B904E41AEFFEEC00BCD362 /* FileOperation.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		93B904C41AEFFB2100BCD362 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93B904CF1AEFFB2100BCD362 /* DownloadSorterGUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		93B904CA1AEFFB2100BCD362 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 93B904B51AEFFB2100BCD362 /* DownloadSorter */;
-			targetProxy = 93B904C91AEFFB2100BCD362 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		93B904C11AEFFB2100BCD362 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93B904C21AEFFB2100BCD362 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		93285BFD1BC2F80B00E9B88D /* Debug */ = {
@@ -397,6 +256,7 @@
 				ENABLE_TESTABILITY = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DownloadSorter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -405,6 +265,7 @@
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DownloadSorter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -421,8 +282,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -466,8 +329,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -486,35 +351,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		93B904D31AEFFB2100BCD362 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = DownloadSorterGUI/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lutzifer.DownloadSorter;
-				PRODUCT_NAME = DownloadSorter;
-				SWIFT_OBJC_BRIDGING_HEADER = "DownloadSorter-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		93B904D41AEFFB2100BCD362 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = DownloadSorterGUI/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lutzifer.DownloadSorter;
-				PRODUCT_NAME = DownloadSorter;
-				SWIFT_OBJC_BRIDGING_HEADER = "DownloadSorter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -535,6 +372,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "number42.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = DownloadSorter;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DownloadSorter.app/Contents/MacOS/DownloadSorter";
 			};
 			name = Debug;
@@ -552,6 +390,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "number42.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = DownloadSorter;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DownloadSorter.app/Contents/MacOS/DownloadSorter";
 			};
 			name = Release;
@@ -573,15 +412,6 @@
 			buildConfigurations = (
 				93B904D01AEFFB2100BCD362 /* Debug */,
 				93B904D11AEFFB2100BCD362 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		93B904D21AEFFB2100BCD362 /* Build configuration list for PBXNativeTarget "DownloadSorter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				93B904D31AEFFB2100BCD362 /* Debug */,
-				93B904D41AEFFB2100BCD362 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
