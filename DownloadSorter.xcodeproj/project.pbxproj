@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
+		84BC13D31EB50A8A0078533E /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D01EB50A8A0078533E /* CommandLine.swift */; };
+		84BC13D41EB50A8A0078533E /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D11EB50A8A0078533E /* Option.swift */; };
+		84BC13D51EB50A8A0078533E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D21EB50A8A0078533E /* StringExtensions.swift */; };
+		84BC13D61EB50A8D0078533E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93285BFB1BC2F80B00E9B88D /* main.swift */; };
 		93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */; };
 		93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E11AEFFEEC00BCD362 /* FileOperation.swift */; };
 		93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */; };
@@ -29,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		849BA6931BE51DC5001B3CE5 /* TLDList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDList.swift; sourceTree = "<group>"; };
+		84BC13D01EB50A8A0078533E /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		84BC13D11EB50A8A0078533E /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		84BC13D21EB50A8A0078533E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		93285BF91BC2F80B00E9B88D /* downloadSorter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = downloadSorter; sourceTree = BUILT_PRODUCTS_DIR; };
 		93285BFB1BC2F80B00E9B88D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DownloadSorter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -59,6 +66,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84BC13D71EB50AA30078533E /* CommandLineSwift */ = {
+			isa = PBXGroup;
+			children = (
+				84BC13D01EB50A8A0078533E /* CommandLine.swift */,
+				84BC13D11EB50A8A0078533E /* Option.swift */,
+				84BC13D21EB50A8A0078533E /* StringExtensions.swift */,
+			);
+			name = CommandLineSwift;
+			path = CommandLineSwift;
+			sourceTree = "<group>";
+		};
 		93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +94,7 @@
 		93B904AD1AEFFB2100BCD362 = {
 			isa = PBXGroup;
 			children = (
+				84BC13D71EB50AA30078533E /* CommandLineSwift */,
 				93B904B71AEFFB2100BCD362 /* Products */,
 				93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */,
 			);
@@ -193,11 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BC13D41EB50A8A0078533E /* Option.swift in Sources */,
 				93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */,
 				93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */,
+				84BC13D51EB50A8A0078533E /* StringExtensions.swift in Sources */,
 				93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */,
 				9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */,
+				84BC13D61EB50A8D0078533E /* main.swift in Sources */,
 				849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */,
+				84BC13D31EB50A8A0078533E /* CommandLine.swift in Sources */,
 				93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

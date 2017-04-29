@@ -37,7 +37,7 @@ if (help.value) {
 }
 
 if (sourcePath.value == nil) {
-    sourcePath.setValue(["."])
+    _ = sourcePath.setValue(["."])
 }
 
 if let sourcePathString = sourcePath.value {
