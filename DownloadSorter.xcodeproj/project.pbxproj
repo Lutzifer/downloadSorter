@@ -33,9 +33,9 @@
 		93285BFB1BC2F80B00E9B88D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DownloadSorter-Bridging-Header.h"; sourceTree = "<group>"; };
 		93B904C81AEFFB2100BCD362 /* DownloadSorter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownloadSorter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		93B904D81AEFFB5D00BCD362 /* SortManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortManager.swift; path = DownloadSorterGUI/SortManager.swift; sourceTree = "<group>"; };
-		93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributeExtractor.h; path = DownloadSorterGUI/AttributeExtractor.h; sourceTree = "<group>"; };
-		93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributeExtractor.m; path = DownloadSorterGUI/AttributeExtractor.m; sourceTree = "<group>"; };
+		93B904D81AEFFB5D00BCD362 /* SortManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortManager.swift; sourceTree = "<group>"; };
+		93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeExtractor.h; sourceTree = "<group>"; };
+		93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeExtractor.m; sourceTree = "<group>"; };
 		93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveOperation.swift; sourceTree = "<group>"; };
 		93B904E11AEFFEEC00BCD362 /* FileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileOperation.swift; sourceTree = "<group>"; };
 		93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDirectoriesOperation.swift; sourceTree = "<group>"; };
@@ -62,31 +62,22 @@
 		93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */ = {
 			isa = PBXGroup;
 			children = (
-				93285BFB1BC2F80B00E9B88D /* main.swift */,
-			);
-			name = downloadSorterCLI;
-			path = downloadSorter;
-			sourceTree = "<group>";
-		};
-		93285C001BC2F82F00E9B88D /* Common */ = {
-			isa = PBXGroup;
-			children = (
 				93B904DF1AEFFEDC00BCD362 /* FileOperations */,
 				93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */,
 				93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */,
+				9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */,
 				93B904D81AEFFB5D00BCD362 /* SortManager.swift */,
 				849BA6931BE51DC5001B3CE5 /* TLDList.swift */,
+				93285BFB1BC2F80B00E9B88D /* main.swift */,
 			);
-			name = Common;
+			path = downloadSorterCLI;
 			sourceTree = "<group>";
 		};
 		93B904AD1AEFFB2100BCD362 = {
 			isa = PBXGroup;
 			children = (
-				9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */,
-				93285C001BC2F82F00E9B88D /* Common */,
-				93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */,
 				93B904B71AEFFB2100BCD362 /* Products */,
+				93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,12 +93,11 @@
 		93B904DF1AEFFEDC00BCD362 /* FileOperations */ = {
 			isa = PBXGroup;
 			children = (
-				93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */,
 				93B904E11AEFFEEC00BCD362 /* FileOperation.swift */,
 				93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */,
+				93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */,
 			);
-			name = FileOperations;
-			path = DownloadSorterGUI;
+			path = FileOperations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,7 +217,7 @@
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DownloadSorter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "downloadSorterCLI/DownloadSorter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -236,7 +226,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DownloadSorter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "downloadSorterCLI/DownloadSorter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
