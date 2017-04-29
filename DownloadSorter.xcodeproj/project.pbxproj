@@ -73,7 +73,6 @@
 				84BC13D11EB50A8A0078533E /* Option.swift */,
 				84BC13D21EB50A8A0078533E /* StringExtensions.swift */,
 			);
-			name = CommandLineSwift;
 			path = CommandLineSwift;
 			sourceTree = "<group>";
 		};
@@ -126,6 +125,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93285BFF1BC2F80B00E9B88D /* Build configuration list for PBXNativeTarget "downloadSorter" */;
 			buildPhases = (
+				84BC13D91EB50B1F0078533E /* Swimat */,
+				84BC13D81EB50B1E0078533E /* Swiftlint */,
 				93285BF51BC2F80B00E9B88D /* Sources */,
 				93285BF61BC2F80B00E9B88D /* Frameworks */,
 				93285BF71BC2F80B00E9B88D /* CopyFiles */,
@@ -206,6 +207,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84BC13D81EB50B1E0078533E /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		84BC13D91EB50B1F0078533E /* Swimat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swimat;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swimat >/dev/null; then\nswimat -r downloadSorterCLI\nelse\necho \"warning: Swimat not installed, download from https://github.com/Jintin/Swimat or install with 'brew install swimat'\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		93285BF51BC2F80B00E9B88D /* Sources */ = {
