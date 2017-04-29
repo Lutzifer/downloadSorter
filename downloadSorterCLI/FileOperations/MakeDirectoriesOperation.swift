@@ -36,7 +36,8 @@ class MakeDirectoriesOperation: FileOperation {
 		var path = URL(fileURLWithPath: directoryPath)
 
 		repeat {
-			isEmpty = (try! fileManager.contentsOfDirectory(atPath: path.absoluteString)).count == 0
+			isEmpty = (try? fileManager.contentsOfDirectory(atPath: path.absoluteString))?.count == 0
+
 			if isEmpty {
 				print("Remove Directory \(path)")
 				do {
