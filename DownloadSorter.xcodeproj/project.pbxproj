@@ -8,14 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
-		93285BFC1BC2F80B00E9B88D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93285BFB1BC2F80B00E9B88D /* main.swift */; };
 		93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */; };
 		93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E11AEFFEEC00BCD362 /* FileOperation.swift */; };
 		93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */; };
 		93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */; };
-		937110811BC3104200D9E418 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107B1BC3104200D9E418 /* CommandLine.swift */; };
-		937110821BC3104200D9E418 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371107E1BC3104200D9E418 /* Option.swift */; };
-		937110841BC3104200D9E418 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937110801BC3104200D9E418 /* StringExtensions.swift */; };
 		9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904D81AEFFB5D00BCD362 /* SortManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,12 +31,6 @@
 		849BA6931BE51DC5001B3CE5 /* TLDList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDList.swift; sourceTree = "<group>"; };
 		93285BF91BC2F80B00E9B88D /* downloadSorter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = downloadSorter; sourceTree = BUILT_PRODUCTS_DIR; };
 		93285BFB1BC2F80B00E9B88D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		9371107B1BC3104200D9E418 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
-		9371107C1BC3104200D9E418 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9371107D1BC3104200D9E418 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		9371107E1BC3104200D9E418 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
-		9371107F1BC3104200D9E418 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		937110801BC3104200D9E418 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DownloadSorter-Bridging-Header.h"; sourceTree = "<group>"; };
 		93B904C81AEFFB2100BCD362 /* DownloadSorter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownloadSorter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B904D81AEFFB5D00BCD362 /* SortManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortManager.swift; path = DownloadSorterGUI/SortManager.swift; sourceTree = "<group>"; };
@@ -72,7 +62,6 @@
 		93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */ = {
 			isa = PBXGroup;
 			children = (
-				9371107A1BC3104200D9E418 /* CommandLine */,
 				93285BFB1BC2F80B00E9B88D /* main.swift */,
 			);
 			name = downloadSorterCLI;
@@ -89,19 +78,6 @@
 				849BA6931BE51DC5001B3CE5 /* TLDList.swift */,
 			);
 			name = Common;
-			sourceTree = "<group>";
-		};
-		9371107A1BC3104200D9E418 /* CommandLine */ = {
-			isa = PBXGroup;
-			children = (
-				9371107B1BC3104200D9E418 /* CommandLine.swift */,
-				9371107C1BC3104200D9E418 /* Info.plist */,
-				9371107D1BC3104200D9E418 /* LICENSE */,
-				9371107E1BC3104200D9E418 /* Option.swift */,
-				9371107F1BC3104200D9E418 /* README.md */,
-				937110801BC3104200D9E418 /* StringExtensions.swift */,
-			);
-			path = CommandLine;
 			sourceTree = "<group>";
 		};
 		93B904AD1AEFFB2100BCD362 = {
@@ -227,15 +203,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				937110821BC3104200D9E418 /* Option.swift in Sources */,
-				93285BFC1BC2F80B00E9B88D /* main.swift in Sources */,
-				937110841BC3104200D9E418 /* StringExtensions.swift in Sources */,
 				93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */,
 				93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */,
 				93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */,
 				9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */,
 				849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */,
-				937110811BC3104200D9E418 /* CommandLine.swift in Sources */,
 				93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

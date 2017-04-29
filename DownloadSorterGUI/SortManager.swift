@@ -18,27 +18,27 @@ class SortManager {
     
     var urlDepth = 0
     
-    func getListOfFilesInFolder(path: String) -> Array<String> {
-        let fileManager = NSFileManager.defaultManager()
+    func getListOfFilesInFolder(_ path: String) -> Array<String> {
+        let fileManager = FileManager.default
         var error: NSError?
         
         var fileFolderList: [AnyObject]?
         do {
-            fileFolderList = try fileManager.contentsOfDirectoryAtPath(path)
+            fileFolderList = try fileManager.contentsOfDirectory(atPath: path) as [AnyObject]
         } catch let error1 as NSError {
             error = error1
             fileFolderList = nil
         }
         
         if(error != nil) {
-            print("Error: \(error?.localizedDescription)")
+            print("Error: \(String(describing: error?.localizedDescription))")
             return []
         } else {
             var fileList = Array<String>()
             for file in fileFolderList as! Array<String> {
                 var isDirectory: ObjCBool = false
-                if(fileManager.fileExistsAtPath("\(path)/\(file)", isDirectory: &isDirectory)){
-                    if(!isDirectory){
+                if(fileManager.fileExists(atPath: "\(path)/\(file)", isDirectory: &isDirectory)){
+                    if(!isDirectory.boolValue){
                         fileList.append("\(path)/\(file)")
                     }
                 }
@@ -47,15 +47,15 @@ class SortManager {
         }
     }
     
-    func extractTargetFolder(input: Array<AnyObject>) -> String {
+    func extractTargetFolder(_ input: Array<AnyObject>) -> String {
         let isHTTP : NSPredicate = NSPredicate(format: "SELF MATCHES '^https?://.*'")
         let isFTP : NSPredicate = NSPredicate(format: "SELF MATCHES '^ftps?://.*'")
         let isEmail : NSPredicate = NSPredicate(format: "SELF MATCHES '.*<.*@.*>.*'")
         
-        if( isHTTP.evaluateWithObject(input.first as! String) || isFTP.evaluateWithObject(input.first as! String) ){
+        if( isHTTP.evaluate(with: input.first as! String) || isFTP.evaluate(with: input.first as! String) ){
             // get Host
-            for result in Array(input.reverse()) {
-                var resultArray = (result as! String).componentsSeparatedByString("/")
+            for result in Array(input.reversed()) {
+                var resultArray = (result as! String).components(separatedBy: "/")
 
                 if(resultArray.count > 2) {
                     var resultString : String = resultArray[2]
@@ -69,20 +69,20 @@ class SortManager {
                             if resultString.hasSuffix(".\(tld)") {
                                 suffix = tld
                                 let suffixLength = suffix!.characters.count + 1// (+1 to include dot)
-                                let endIndex = resultString.endIndex.advancedBy(-suffixLength)
-                                resultString = [resultString.substringWithRange(resultString.startIndex..<endIndex), "suffix"].joinWithSeparator(".")
+                                let endIndex = resultString.characters.index(resultString.endIndex, offsetBy: -suffixLength)
+                                resultString = [resultString.substring(with: resultString.startIndex..<endIndex), "suffix"].joined(separator: ".")
                                 break
                             }
                         }
                         
-                        resultString = getLast(resultString.splitByCharacter("."), count: self.urlDepth).joinWithSeparator(".")
+                        resultString = getLast(resultString.components(separatedBy: "."), count: self.urlDepth).joined(separator: ".")
                         
                         // replace singlepart TLD with multipart TLD
                         if let realSuffix = suffix {
-                            var strings = resultString.splitByCharacter(".")
+                            var strings = resultString.components(separatedBy: ".")
                             strings.removeLast()
                             strings.append(realSuffix)
-                            resultString = strings.joinWithSeparator(".")
+                            resultString = strings.joined(separator: ".")
                         }
                         
                     }
@@ -94,47 +94,40 @@ class SortManager {
             }
             
             return ""
-        } else if (isEmail.evaluateWithObject(input.first as! String)){
+        } else if (isEmail.evaluate(with: input.first as! String)){
             // Take first field (Full Name) for this
-            return (input.first as! String).componentsSeparatedByString("<")[0]
+            return (input.first as! String).components(separatedBy: "<")[0]
         } else {
             return input.last as! String
         }
     }
     
-    func filterRunningDownloads(fileList: Array<String>) -> Array<String> {
+    func filterRunningDownloads(_ fileList: Array<String>) -> Array<String> {
         // filter running Firefox downloads, which consist of the original file and the original file with extension ".part"
         
         let partFiles = fileList.filter { (fileName) -> Bool in
-            if let fileExtension = NSURL(fileURLWithPath: fileName).pathExtension {
-                return fileExtension == "part"
-            } else {
-                return false
-            }
+            URL(fileURLWithPath: fileName).pathExtension == "part"
         }
         
         var mutableFileList = fileList
         
         for partFile in partFiles {
-            if let fileName = NSURL(fileURLWithPath: partFile).URLByDeletingPathExtension?.path,
-                let partFileIndex = fileList.indexOf(partFile),
-                let fileIndex = fileList.indexOf(fileName) {
-                    let reverseIndices = [partFileIndex, fileIndex].sort{$0 > $1}
+            if let fileName = NSURL(fileURLWithPath: partFile).deletingPathExtension?.path,
+                let partFileIndex = fileList.index(of: partFile),
+                let fileIndex = fileList.index(of: fileName) {
+                    let reverseIndices = [partFileIndex, fileIndex].sorted{$0 > $1}
 
                     for index in reverseIndices {
-                        mutableFileList.removeAtIndex(index)
+                        mutableFileList.remove(at: index)
                     }
             }
         }
         
         return mutableFileList.filter({ (fileName) -> Bool in
             // filter running downloads for chrome, opera and safari
-            if let fileExtension = NSURL(fileURLWithPath: fileName).pathExtension {
-                // Safari .download files are actually folders, so they are ignored anyway
-                return !["crdownload", "opdownload"].contains(fileExtension)
-            } else {
-                return false
-            }
+            // Safari .download files are actually folders, so they are ignored anyway
+            return !["crdownload", "opdownload"].contains(URL(fileURLWithPath: fileName).pathExtension)
+            
         })
     }
     
@@ -149,35 +142,32 @@ class SortManager {
         
         // Filter dot files
         cleanFileList = cleanFileList.filter({ (filePath : String) -> Bool in
-            if let fileName = NSURL(fileURLWithPath: filePath).lastPathComponent {
-                return !fileName.hasPrefix(".")
-            } else {
-                return false
-            }
+            let fileName = URL(fileURLWithPath: filePath).lastPathComponent
+            return !fileName.hasPrefix(".")
         })
         
         for file in cleanFileList {
-            let whereFroms : Array<AnyObject>? = AttributeExtractor.getWhereFromForPath(file)
+            let whereFroms : Array<AnyObject>? = AttributeExtractor.getWhereFrom(forPath: file)! as Array<AnyObject>
             
-                let fileManager = NSFileManager.defaultManager()
+                let fileManager = FileManager.default
             
                 var targetFolder : String
             
                 if(whereFroms != nil) {
-                    let extractedFolder = extractTargetFolder(whereFroms!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    let extractedFolder = extractTargetFolder(whereFroms!).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                     targetFolder = "\(targetPath)/\(extractedFolder)"
                 } else {
                     targetFolder = "Unknown Source"
                 }
                 
-                if(!fileManager.fileExistsAtPath(targetFolder)){
+                if(!fileManager.fileExists(atPath: targetFolder)){
                     let directoryOperation = MakeDirectoriesOperation()
                     directoryOperation.directoryPath = targetFolder
                     operationList.append(directoryOperation)
                 }
                 
                 let moveOperation = MoveOperation()
-                let fileName = file.stringByReplacingOccurrencesOfString(sourcePath, withString: "", options: [], range: nil)
+                let fileName = file.replacingOccurrences(of: sourcePath, with: "", options: [], range: nil)
                 
                 moveOperation.sourceFolder = sourcePath
                 moveOperation.sourceFileName = fileName
@@ -219,9 +209,9 @@ class SortManager {
     }
     
     func undoOperations() -> String {
-        for fileOperation in Array(operationList.reverse()) {
+        for fileOperation in Array(operationList.reversed()) {
             if(fileOperation.state == OperationState.done){
-                fileOperation.undoOperation()
+                _ = fileOperation.undoOperation()
             }
         }
         
@@ -233,7 +223,7 @@ class SortManager {
     }
 
     // http://stackoverflow.com/questions/31007643/in-swift-whats-the-cleanest-way-to-get-the-last-two-items-in-an-array
-    func getLast<T>(array: [T], count: Int) -> [T] {
+    func getLast<T>(_ array: [T], count: Int) -> [T] {
         if count >= array.count {
             return array
         }

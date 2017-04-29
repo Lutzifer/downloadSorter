@@ -15,10 +15,10 @@ class MakeDirectoriesOperation: FileOperation {
     
     override func doOperation() -> Bool {
         // create all Directories needed
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         
         do {
-            try fileManager.createDirectoryAtPath(directoryPath, withIntermediateDirectories: true, attributes: nil)
+            try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
             self.state = OperationState.done
             return true
         } catch let error as NSError {
@@ -29,20 +29,20 @@ class MakeDirectoriesOperation: FileOperation {
     }
     
     override func undoOperation() -> Bool {
-        let fileManager = NSFileManager.defaultManager()        
+        let fileManager = FileManager.default        
         // Delete Directories, if they are empty
         
         var isEmpty = false;
-        var path = NSURL(fileURLWithPath: directoryPath);
+        var path = URL(fileURLWithPath: directoryPath);
         
         repeat{
-            isEmpty = (try! fileManager.contentsOfDirectoryAtPath(path.absoluteString)).count == 0
+            isEmpty = (try! fileManager.contentsOfDirectory(atPath: path.absoluteString)).count == 0
             if(isEmpty) {
                 print("Remove Directory \(path)")
                 do {
-                    try fileManager.removeItemAtPath(path.absoluteString)
+                    try fileManager.removeItem(atPath: path.absoluteString)
                     // remove last dir for next round
-                    path = path.URLByDeletingLastPathComponent!
+                    path = path.deletingLastPathComponent()
                 } catch let error as NSError {
                     print("Error: \(error.localizedDescription)")
                     self.state = OperationState.failed
