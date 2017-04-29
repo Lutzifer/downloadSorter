@@ -1,2 +1,27 @@
+opt_in_rules:
+ - conditional_returns_on_newline
+ - empty_count
+ - closure_end_indentation
+ - closure_spacing
+ - explicit_type_interface
+ - fatal_error_message
+ - first_where
+ - force_unwrapping
+ - object_literal
+ - sorted_imports
+ - switch_case_on_newline
+ - valid_docs
+ - private_outlet
+ - attributes
+ - overridden_super_call
+ - prohibited_super_call
+ - implicitly_unwrapped_optional
+ - missing_docs
+ - explicit_init
+ - nimble_operator
+ - operator_usage_whitespace
+ - redundant_nil_coalescing
+ - number_separator
+ 
 excluded:
     CommandLineSwift

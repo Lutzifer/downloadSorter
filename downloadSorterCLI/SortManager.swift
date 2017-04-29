@@ -202,7 +202,7 @@ class SortManager {
 				}
 			}
 		}
-		if operationList.count > 0 {
+		if operationList.isEmpty {
 			return "done"
 		} else {
 			return ""
@@ -215,7 +215,7 @@ class SortManager {
 			.filter { $0.state == OperationState.done }
 			.filter { $0.undoOperation() }
 
-		if undoneOperations.count > 0 {
+		if undoneOperations.isEmpty {
 			return "undone"
 		} else {
 			return ""

@@ -2,7 +2,7 @@
 //  MoveOperation.swift
 //  DownloadSorterSwift
 //
-//  Created by Wolfgang Lutz on 24.04.15.
+//  Created by admin on 24.04.15.
 //  Copyright (c) 2015 Wolfgang Lutz. All rights reserved.
 //
 
@@ -32,14 +32,13 @@ class MoveOperation: FileOperation {
 		// Add .2 to the name until it is unique
 		while fileManager.fileExists(atPath: targetPath()) {
 
-			let fileName = NSURL(fileURLWithPath: targetPath()).deletingPathExtension?.lastPathComponent
-			guard fileName != nil else {
+			guard let fileName = NSURL(fileURLWithPath: targetPath()).deletingPathExtension?.lastPathComponent else {
 				self.state = OperationState.failed
 				return false
 			}
 
 			let fileExtension = URL(fileURLWithPath: targetPath()).pathExtension
-			targetFileName = "\(fileName!).2.\(fileExtension)"
+			targetFileName = "\(fileName).2.\(fileExtension)"
 		}
 
 		do {

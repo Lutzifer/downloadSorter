@@ -3,7 +3,7 @@
 //  downloadSorter
 //
 //  Created by Wolfgang Lutz on 05.10.15.
-//  Copyright © 2015 Wolfgang Lutz. All rights reserved.
+//  Copyright (c) 2015 Wolfgang Lutz. All rights reserved.
 //
 
 import Foundation

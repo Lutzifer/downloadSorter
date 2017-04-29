@@ -2,7 +2,7 @@
 //  MakeDirectoriesOperation.swift
 //  DownloadSorterSwift
 //
-//  Created by Wolfgang Lutz on 25.04.15.
+//  Created by admin on 25.04.15.
 //  Copyright (c) 2015 Wolfgang Lutz. All rights reserved.
 //
 
@@ -36,7 +36,7 @@ class MakeDirectoriesOperation: FileOperation {
 		var path = URL(fileURLWithPath: directoryPath)
 
 		repeat {
-			isEmpty = (try? fileManager.contentsOfDirectory(atPath: path.absoluteString))?.count == 0
+			isEmpty = (try? fileManager.contentsOfDirectory(atPath: path.absoluteString))?.isEmpty ?? false
 
 			if isEmpty {
 				print("Remove Directory \(path)")

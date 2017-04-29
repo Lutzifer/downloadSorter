@@ -1,11 +1,12 @@
-//swiftlint:disable file_length
 //
 //  TLDList.swift
 //  DownloadSorter
 //
 //  Created by Admin on 31.10.15.
-//  Copyright © 2015 Number 42. All rights reserved.
+//  Copyright (c) 2015 Wolfgang Lutz. All rights reserved.
 //
+
+//swiftlint:disable file_length
 
 // Taken from https://publicsuffix.org/list/public_suffix_list.dat
 // This Source Code Form is subject to the terms of the Mozilla Public
