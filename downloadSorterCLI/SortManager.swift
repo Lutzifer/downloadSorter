@@ -21,12 +21,12 @@ class SortManager {
 		let fileManager = FileManager.default
 		var error: NSError?
 
-		var fileFolderList: [AnyObject]?
+		var fileFolderList: [String]
 		do {
-			fileFolderList = try fileManager.contentsOfDirectory(atPath: path) as [AnyObject]
+			fileFolderList = try fileManager.contentsOfDirectory(atPath: path)
 		} catch let error1 as NSError {
 			error = error1
-			fileFolderList = nil
+			fileFolderList = []
 		}
 
 		if error != nil {
@@ -34,7 +34,7 @@ class SortManager {
 			return []
 		} else {
 			var fileList = [String]()
-			for file in fileFolderList as! [String] {
+			for file in fileFolderList {
 				var isDirectory: ObjCBool = false
 				if(fileManager.fileExists(atPath: "\(path)/\(file)", isDirectory: &isDirectory)) {
 					if !isDirectory.boolValue {
@@ -46,15 +46,15 @@ class SortManager {
 		}
 	}
 
-	func extractTargetFolder(_ input: [AnyObject]) -> String {
+	func extractTargetFolder(_ input: [String]) -> String? {
 		let isHTTP: NSPredicate = NSPredicate(format: "SELF MATCHES '^https?://.*'")
 		let isFTP: NSPredicate = NSPredicate(format: "SELF MATCHES '^ftps?://.*'")
 		let isEmail: NSPredicate = NSPredicate(format: "SELF MATCHES '.*<.*@.*>.*'")
 
-		if isHTTP.evaluate(with: input.first as! String) || isFTP.evaluate(with: input.first as! String) {
+		if isHTTP.evaluate(with: input.first) || isFTP.evaluate(with: input.first) {
 			// get Host
 			for result in Array(input.reversed()) {
-				var resultArray = (result as! String).components(separatedBy: "/")
+				var resultArray = result.components(separatedBy: "/")
 
 				if resultArray.count > 2 {
 					var resultString: String = resultArray[2]
@@ -93,11 +93,11 @@ class SortManager {
 			}
 
 			return ""
-		} else if isEmail.evaluate(with: input.first as! String) {
+		} else if isEmail.evaluate(with: input.first) {
 			// Take first field (Full Name) for this
-			return (input.first as! String).components(separatedBy: "<")[0]
+			return input.first?.components(separatedBy: "<")[0]
 		} else {
-			return input.last as! String
+			return input.last
 		}
 	}
 
@@ -146,17 +146,16 @@ class SortManager {
 		})
 
 		for file in cleanFileList {
-			if let whereFroms = AttributeExtractor.getWhereFrom(forPath: file) as [AnyObject]? {
+			if let whereFroms = AttributeExtractor.getWhereFrom(forPath: file) as [String]? {
 
 				let fileManager = FileManager.default
 
 				var targetFolder: String
 
-				if whereFroms.isEmpty {
-					targetFolder = "Unknown Source"
-				} else {
-					let extractedFolder = extractTargetFolder(whereFroms).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+				if !whereFroms.isEmpty, let extractedFolder = extractTargetFolder(whereFroms)?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
 					targetFolder = "\(targetPath)/\(extractedFolder)"
+				} else {
+					targetFolder = "Unknown Source"
 				}
 
 				if !fileManager.fileExists(atPath: targetFolder) {

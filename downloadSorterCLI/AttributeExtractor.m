@@ -10,7 +10,7 @@
 
 @implementation AttributeExtractor
 
-+ (NSArray*) getWhereFromForPath:(NSString*) path{
++ (NSArray<NSString *> *) getWhereFromForPath:(NSString*) path{
     MDItemRef item = MDItemCreate( kCFAllocatorDefault, (CFStringRef)CFBridgingRetain(path) );
     
     CFArrayRef list = MDItemCopyAttributeNames( item );

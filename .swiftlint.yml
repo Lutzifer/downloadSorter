@@ -1,7 +1,6 @@
 disabled_rules:
   - file_length
   - line_length
-  - force_cast
   - force_try
   - function_body_length
   - type_body_length

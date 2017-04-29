@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface AttributeExtractor : NSObject
-+ (NSArray*) getWhereFromForPath:(NSString*) path;
++ (NSArray<NSString *> *) getWhereFromForPath:(NSString*) path;
 @end
