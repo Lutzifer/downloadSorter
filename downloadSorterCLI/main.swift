@@ -15,22 +15,26 @@ let sourcePath = StringOption(
   longFlag: "sourcepath",
   helpMessage: "Path to the Folder which contains the files to process."
 )
+
 let destinationPath = StringOption(
   shortFlag: "t",
   longFlag: "targetpath",
   helpMessage: "Path to the Folder which where the files are processed to. "
     + "If not given, the sourcepath is used."
 )
+
 let help = BoolOption(
   shortFlag: "h",
   longFlag: "help",
   helpMessage: "Prints a help message."
 )
+
 let dryrun = BoolOption(
   shortFlag: "d",
   longFlag: "dry-run",
   helpMessage: "Print what will happen instead of doing it."
 )
+
 let urlDepth = IntOption(
   shortFlag: "u",
   longFlag: "urldepth",

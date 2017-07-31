@@ -77,15 +77,31 @@
 			path = CommandLineSwift;
 			sourceTree = "<group>";
 		};
+		84F022521F2F212E004C42B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84F022531F2F213B004C42B6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */,
+				93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */,
+				849BA6931BE51DC5001B3CE5 /* TLDList.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */ = {
 			isa = PBXGroup;
 			children = (
+				84F022531F2F213B004C42B6 /* Utils */,
+				84F022521F2F212E004C42B6 /* Supporting Files */,
 				93B904DF1AEFFEDC00BCD362 /* FileOperations */,
-				93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */,
-				93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */,
-				9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */,
 				93B904D81AEFFB5D00BCD362 /* SortManager.swift */,
-				849BA6931BE51DC5001B3CE5 /* TLDList.swift */,
 				93285BFB1BC2F80B00E9B88D /* main.swift */,
 			);
 			path = downloadSorterCLI;
