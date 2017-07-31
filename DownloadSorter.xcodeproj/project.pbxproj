@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
-		84BC13D31EB50A8A0078533E /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D01EB50A8A0078533E /* CommandLine.swift */; };
-		84BC13D41EB50A8A0078533E /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D11EB50A8A0078533E /* Option.swift */; };
-		84BC13D51EB50A8A0078533E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D21EB50A8A0078533E /* StringExtensions.swift */; };
 		84BC13D61EB50A8D0078533E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93285BFB1BC2F80B00E9B88D /* main.swift */; };
+		84F0224F1F2F2013004C42B6 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0224D1F2F1FCA004C42B6 /* CommandLine.swift */; };
+		84F022501F2F2013004C42B6 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0224E1F2F1FCA004C42B6 /* Option.swift */; };
+		84F022511F2F2013004C42B6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0224C1F2F1FCA004C42B6 /* StringExtensions.swift */; };
 		93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */; };
 		93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E11AEFFEEC00BCD362 /* FileOperation.swift */; };
 		93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */; };
@@ -33,9 +33,10 @@
 
 /* Begin PBXFileReference section */
 		849BA6931BE51DC5001B3CE5 /* TLDList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDList.swift; sourceTree = "<group>"; };
-		84BC13D01EB50A8A0078533E /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
-		84BC13D11EB50A8A0078533E /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
-		84BC13D21EB50A8A0078533E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		84F0224B1F2F1F23004C42B6 /* BuildScripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BuildScripts; sourceTree = "<group>"; };
+		84F0224C1F2F1FCA004C42B6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Dependencies/CommandLine/StringExtensions.swift; sourceTree = SOURCE_ROOT; };
+		84F0224D1F2F1FCA004C42B6 /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommandLine.swift; path = Dependencies/CommandLine/CommandLine.swift; sourceTree = SOURCE_ROOT; };
+		84F0224E1F2F1FCA004C42B6 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Option.swift; path = Dependencies/CommandLine/Option.swift; sourceTree = SOURCE_ROOT; };
 		93285BF91BC2F80B00E9B88D /* downloadSorter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = downloadSorter; sourceTree = BUILT_PRODUCTS_DIR; };
 		93285BFB1BC2F80B00E9B88D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DownloadSorter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -69,9 +70,9 @@
 		84BC13D71EB50AA30078533E /* CommandLineSwift */ = {
 			isa = PBXGroup;
 			children = (
-				84BC13D01EB50A8A0078533E /* CommandLine.swift */,
-				84BC13D11EB50A8A0078533E /* Option.swift */,
-				84BC13D21EB50A8A0078533E /* StringExtensions.swift */,
+				84F0224D1F2F1FCA004C42B6 /* CommandLine.swift */,
+				84F0224E1F2F1FCA004C42B6 /* Option.swift */,
+				84F0224C1F2F1FCA004C42B6 /* StringExtensions.swift */,
 			);
 			path = CommandLineSwift;
 			sourceTree = "<group>";
@@ -93,11 +94,14 @@
 		93B904AD1AEFFB2100BCD362 = {
 			isa = PBXGroup;
 			children = (
+				84F0224B1F2F1F23004C42B6 /* BuildScripts */,
 				84BC13D71EB50AA30078533E /* CommandLineSwift */,
 				93B904B71AEFFB2100BCD362 /* Products */,
 				93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		93B904B71AEFFB2100BCD362 /* Products */ = {
 			isa = PBXGroup;
@@ -125,8 +129,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93285BFF1BC2F80B00E9B88D /* Build configuration list for PBXNativeTarget "downloadSorter" */;
 			buildPhases = (
-				84BC13D91EB50B1F0078533E /* Swimat */,
-				84BC13D81EB50B1E0078533E /* Swiftlint */,
+				84BC13D91EB50B1F0078533E /* PreCompile */,
 				93285BF51BC2F80B00E9B88D /* Sources */,
 				93285BF61BC2F80B00E9B88D /* Frameworks */,
 				93285BF71BC2F80B00E9B88D /* CopyFiles */,
@@ -209,33 +212,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		84BC13D81EB50B1E0078533E /* Swiftlint */ = {
+		84BC13D91EB50B1F0078533E /* PreCompile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = PreCompile;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		84BC13D91EB50B1F0078533E /* Swimat */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Swimat;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swimat >/dev/null; then\nswimat -r downloadSorterCLI\nelse\necho \"warning: Swimat not installed, download from https://github.com/Jintin/Swimat or install with 'brew install swimat'\"\nfi";
+			shellScript = "sh \"${SRCROOT}/BuildScripts/Phases/CLIPreCompile.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -244,15 +233,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84BC13D41EB50A8A0078533E /* Option.swift in Sources */,
 				93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */,
 				93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */,
-				84BC13D51EB50A8A0078533E /* StringExtensions.swift in Sources */,
+				84F022511F2F2013004C42B6 /* StringExtensions.swift in Sources */,
 				93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */,
+				84F0224F1F2F2013004C42B6 /* CommandLine.swift in Sources */,
 				9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */,
 				84BC13D61EB50A8D0078533E /* main.swift in Sources */,
 				849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */,
-				84BC13D31EB50A8A0078533E /* CommandLine.swift in Sources */,
+				84F022501F2F2013004C42B6 /* Option.swift in Sources */,
 				93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
