@@ -170,7 +170,7 @@
 				TargetAttributes = {
 					93285BF81BC2F80B00E9B88D = {
 						CreatedOnToolsVersion = 7.0.1;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 					};
 					93B904C71AEFFB2100BCD362 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -273,7 +273,8 @@
 				ENABLE_TESTABILITY = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "downloadSorterCLI/DownloadSorter-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -282,7 +283,8 @@
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "downloadSorterCLI/DownloadSorter-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
