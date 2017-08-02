@@ -213,19 +213,6 @@ class SortManager {
       return ""
     }
   }
-
-  func undoOperations() -> String {
-
-    let undoneOperations = Array(operationList.reversed())
-      .filter { $0.state == OperationState.done }
-      .filter { $0.undoOperation() }
-
-    if undoneOperations.isEmpty {
-      return "undone"
-    } else {
-      return ""
-    }
-  }
 }
 
 extension String {

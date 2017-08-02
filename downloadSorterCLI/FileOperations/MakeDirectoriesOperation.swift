@@ -30,32 +30,4 @@ class MakeDirectoriesOperation: FileOperation {
       return false
     }
   }
-
-  func undoOperation() -> Bool {
-    let fileManager = FileManager.default
-    // Delete Directories, if they are empty
-
-    var isEmpty = false
-    var path = URL(fileURLWithPath: directoryPath)
-
-    repeat {
-      isEmpty = (try? fileManager.contentsOfDirectory(atPath: path.absoluteString))?.isEmpty ?? false
-
-      if isEmpty {
-        print("Remove Directory \(path)")
-        do {
-          try fileManager.removeItem(atPath: path.absoluteString)
-          // remove last dir for next round
-          path = path.deletingLastPathComponent()
-        } catch let error as NSError {
-          print("Error: \(error.localizedDescription)")
-          self.state = OperationState.failed
-          return false
-        }
-      }
-    } while isEmpty
-
-    self.state = OperationState.undone
-    return true
-  }
 }

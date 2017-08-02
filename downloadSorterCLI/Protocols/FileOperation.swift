@@ -11,7 +11,6 @@ import Cocoa
 enum OperationState {
   case todo
   case done
-  case undone
   case failed
 }
 
@@ -19,5 +18,4 @@ protocol FileOperation: CustomStringConvertible {
   var state: OperationState { get set }
 
   func doOperation() -> Bool
-  func undoOperation() -> Bool
 }

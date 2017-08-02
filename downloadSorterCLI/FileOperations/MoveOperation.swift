@@ -53,24 +53,4 @@ class MoveOperation: FileOperation {
       return false
     }
   }
-
-  func undoOperation() -> Bool {
-    let fileManager = FileManager.default
-    var error: NSError?
-
-    do {
-      try fileManager.moveItem(atPath: targetPath(), toPath: sourcePath())
-    } catch let error1 as NSError {
-      error = error1
-    }
-
-    if error != nil {
-      print("Error: \(String(describing: error?.localizedDescription))")
-      self.state = OperationState.failed
-      return false
-    } else {
-      self.state = OperationState.undone
-      return true
-    }
-  }
 }
