@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		843A5C661F31BA100017552A /* AttributeExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A5C651F31BA100017552A /* AttributeExtractor.swift */; };
+		843A5C661F31BA100017552A /* FileManager+AttributeExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A5C651F31BA100017552A /* FileManager+AttributeExtractor.swift */; };
 		8446713D1F31EAA000F4D92B /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446713C1F31EAA000F4D92B /* String+Path.swift */; };
 		849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
 		84BC13D61EB50A8D0078533E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93285BFB1BC2F80B00E9B88D /* main.swift */; };
@@ -33,7 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		843A5C651F31BA100017552A /* AttributeExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeExtractor.swift; sourceTree = "<group>"; };
+		843A5C651F31BA100017552A /* FileManager+AttributeExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+AttributeExtractor.swift"; sourceTree = "<group>"; };
 		8446713C1F31EAA000F4D92B /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		849BA6931BE51DC5001B3CE5 /* TLDList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDList.swift; sourceTree = "<group>"; };
 		84F0224B1F2F1F23004C42B6 /* BuildScripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BuildScripts; sourceTree = "<group>"; };
@@ -79,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				8446713C1F31EAA000F4D92B /* String+Path.swift */,
+				843A5C651F31BA100017552A /* FileManager+AttributeExtractor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -97,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				849BA6931BE51DC5001B3CE5 /* TLDList.swift */,
-				843A5C651F31BA100017552A /* AttributeExtractor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -264,7 +264,7 @@
 				84F0224F1F2F2013004C42B6 /* CommandLine.swift in Sources */,
 				9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */,
 				84BC13D61EB50A8D0078533E /* main.swift in Sources */,
-				843A5C661F31BA100017552A /* AttributeExtractor.swift in Sources */,
+				843A5C661F31BA100017552A /* FileManager+AttributeExtractor.swift in Sources */,
 				849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */,
 				84F022501F2F2013004C42B6 /* Option.swift in Sources */,
 			);

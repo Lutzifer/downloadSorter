@@ -1,5 +1,5 @@
 //
-//  AttributeExtractor.swift
+//  FileManager+AttributeExtractor.swift
 //  downloadSorter
 //
 //  Created by Wolfgang Lutz on 02.08.17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AttributeExtractor {
+extension FileManager {
   static func getWhereFromsFromFile(at path: String) -> [String] {
     let item: MDItem? = MDItemCreate(kCFAllocatorDefault, path as CFString)
     let list: CFArray = MDItemCopyAttributeNames(item)

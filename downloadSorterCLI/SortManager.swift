@@ -14,10 +14,8 @@ enum KindDetectorRegex: String {
   case email = ".*<.*@.*>.*"
 }
 
-class SortManager {
+struct SortManager {
   static let defaultUrlDepth: Int = 0
-
-  var operationList: [FileOperation] = [FileOperation]()
 
   let sourceFolder: String
   let targetFolder: String
@@ -44,14 +42,16 @@ class SortManager {
     }
   }
 
-  func getListOfFiles(at path: String) -> [String] {
-    return ((try? FileManager.default.contentsOfDirectory(atPath: path)) ?? [String]()).filter({
-      var isDirectory: ObjCBool = false
-      return FileManager.default.fileExists(atPath: "\(path)/\($0)", isDirectory: &isDirectory)
-        && !isDirectory.boolValue
-    }).map {
-      path.appending("/").appending($0)
-    }
+  func getFiles(at path: String) -> [URL] {
+    return ((try? FileManager.default.contentsOfDirectory(atPath: path)) ?? [String]())
+      .map { String.path(from: [path, $0]) }
+      .filter({
+        var isDirectory: ObjCBool = false
+        return FileManager.default.fileExists(atPath: $0, isDirectory: &isDirectory)
+          && !isDirectory.boolValue
+      }).map {
+        URL(fileURLWithPath: $0)
+      }
   }
 
   func extractTargetFolder(_ input: [String]) -> String? {
@@ -109,107 +109,79 @@ class SortManager {
     }
   }
 
-  func filterRunningDownloads(_ fileList: [String]) -> [String] {
+  func filterRunningDownloads(from list: [URL]) -> [URL] {
     // filter running Firefox downloads, which consist of the original file and the original file with extension ".part"
 
-    let partFiles = fileList.filter { (fileName) -> Bool in
-      URL(fileURLWithPath: fileName).pathExtension == "part"
-    }
+    // get all urls, which have a corresponding partFile
+    let urlsWithPartFile = list.filter { $0.pathExtension == "part" }
+      .map { URL(fileURLWithPath: $0.absoluteString.replacingOccurrences(of: ".part", with: "")) }
 
-    var mutableFileList = fileList
-
-    for partFile in partFiles {
-      if let fileName = NSURL(fileURLWithPath: partFile).deletingPathExtension?.path,
-        let partFileIndex = fileList.index(of: partFile),
-        let fileIndex = fileList.index(of: fileName) {
-        let reverseIndices = [partFileIndex, fileIndex].sorted { $0 > $1 }
-
-        for index in reverseIndices {
-          mutableFileList.remove(at: index)
-        }
-      }
-    }
-
-    return mutableFileList.filter({ (fileName) -> Bool in
-      // filter running downloads for chrome, opera and safari
+    return list.filter {
+      // filter files, that have a part file, actual partfiles are filtered later
+      !urlsWithPartFile.contains($0)
+    }.filter {
+      // filter running downloads for chrome, opera and safari (and firefox part files)
       // Safari .download files are actually folders, so they are ignored anyway
-      !["crdownload", "opdownload"].contains(URL(fileURLWithPath: fileName).pathExtension)
+      !["crdownload", "opdownload", "part"].contains($0.pathExtension)
+    }
+  }
 
-    })
+  private var operations: [FileOperation] {
+    return filterRunningDownloads(from: getFiles(at: sourceFolder))
+      // Filter dot files
+      .filter { !$0.lastPathComponent.hasPrefix(".") }
+      .flatMap { url -> [FileOperation] in
+        var operations = [FileOperation]()
+
+        let whereFroms = FileManager.getWhereFromsFromFile(at: url.path)
+
+        let targetSubFolder: String
+
+        if !whereFroms.isEmpty,
+          let trimmedExtractedFolder = extractTargetFolder(whereFroms)?.trimmingCharacters(
+            in: CharacterSet.whitespacesAndNewlines
+          ) {
+          targetSubFolder = trimmedExtractedFolder
+        } else {
+          targetSubFolder = "Unknown Source"
+        }
+
+        let targetFolderPath = String.path(from: [targetFolder, targetSubFolder])
+
+        if !FileManager.default.fileExists(atPath: targetFolderPath) {
+          operations.append(MakeDirectoriesOperation(directoryPath: targetFolderPath))
+        }
+
+        operations.append(MoveOperation(
+          sourceFolder: sourceFolder,
+          targetFolder: targetFolderPath,
+          fileName: url.lastPathComponent
+        ))
+
+        return operations
+      }
   }
 
   func analyze() -> String {
-    let sourcePath = self.sourceFolder
-    let targetPath = self.targetFolder
-
-    // Reset Operation List
-    self.operationList = [FileOperation]()
-
-    var cleanFileList: [String] = filterRunningDownloads(getListOfFiles(at: sourcePath))
-
-    // Filter dot files
-    cleanFileList = cleanFileList.filter({ (filePath: String) -> Bool in
-      let fileName = URL(fileURLWithPath: filePath).lastPathComponent
-      return !fileName.hasPrefix(".")
-    })
-
-    for path in cleanFileList {
-      let whereFroms = AttributeExtractor.getWhereFromsFromFile(at: path)
-
-      let fileManager = FileManager.default
-
-      var targetFolder: String
-
-      if !whereFroms.isEmpty,
-        let extractedFolder = extractTargetFolder(whereFroms) {
-        let trimmedExtractedFolder = extractedFolder.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        targetFolder = "\(targetPath)/\(trimmedExtractedFolder)"
-      } else {
-        targetFolder = "Unknown Source"
-      }
-
-      if !fileManager.fileExists(atPath: targetFolder) {
-        operationList.append(MakeDirectoriesOperation(directoryPath: targetFolder))
-      }
-
-      let fileName = path.replacingOccurrences(of: sourcePath, with: "", options: [], range: nil)
-
-      let moveOperation = MoveOperation(
-        sourceFolder: sourcePath,
-        targetFolder: targetFolder,
-        fileName: fileName
-      )
-
-      operationList.append(moveOperation)
-    }
-
-    var result = ""
-    for fileOperation in operationList {
-      result += "\n" + fileOperation.description
-    }
+    let result =
+      operations
+      .map { $0.description }
+      .joined(separator: "\n")
 
     if result == "" {
-      result = "Nothing to do"
+      return "Nothing to do"
+    } else {
+      return result
     }
-
-    return result
   }
 
   func doOperations() -> String {
-    for fileOperation in operationList {
-      if fileOperation.state != OperationState.todo {
-        break
-      } else {
-        if !fileOperation.doOperation() {
-          return "failed"
-        }
-      }
-    }
-    if operationList.isEmpty {
-      return "done"
-    } else {
-      return ""
-    }
+    return operations
+      .filter {
+        $0.state == OperationState.todo
+      }.map {
+        [$0.description, $0.doOperation() ? "done" : "failed"].joined(separator: ": ")
+      }.joined(separator: "\n")
   }
 }
 

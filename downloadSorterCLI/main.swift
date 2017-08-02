@@ -63,8 +63,8 @@ let sortManager = SortManager(
   urlDepth: urlDepthOption.value
 )
 
-print(sortManager.analyze())
-
 if !dryrunOption.value {
   print(sortManager.doOperations())
+} else {
+  print(sortManager.analyze())
 }
