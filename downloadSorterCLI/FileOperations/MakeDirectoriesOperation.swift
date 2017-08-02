@@ -10,18 +10,23 @@ import Cocoa
 
 class MakeDirectoriesOperation: FileOperation {
   var state: OperationState = .todo
-  var directoryPath: String = ""
+  let directoryPath: String
 
   var description: String {
     return "Will create directory \(directoryPath)"
   }
 
-  func doOperation() -> Bool {
-    // create all Directories needed
-    let fileManager = FileManager.default
+  init(directoryPath: String) {
+    self.directoryPath = directoryPath
+  }
 
+  // create all Directories needed
+  func doOperation() -> Bool {
     do {
-      try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
+      try FileManager.default.createDirectory(
+        atPath: directoryPath,
+        withIntermediateDirectories: true
+      )
       self.state = OperationState.done
       return true
     } catch let error as NSError {

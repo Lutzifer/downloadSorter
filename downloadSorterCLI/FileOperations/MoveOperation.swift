@@ -12,44 +12,46 @@ class MoveOperation: FileOperation {
   var state: OperationState = .todo
 
   var description: String {
-    return "Will move \(sourcePath()) to \(targetPath())."
+    return "Will move \(sourcePath) to \(uniqueTargetPath)."
   }
 
-  var sourceFolder: String = ""
-  var sourceFileName: String = ""
-  var targetFolder: String = ""
-  var targetFileName: String = ""
+  private let sourceFolder: String
+  private let sourceFileName: String
+  private let targetFolder: String
+  private let targetFileName: String
 
-  func sourcePath() -> String {
-    return NSString.path(withComponents: [sourceFolder, sourceFileName])
+  private var sourcePath: String {
+    return String.path(from: [sourceFolder, sourceFileName])
   }
 
-  func targetPath() -> String {
-    return NSString.path(withComponents: [targetFolder, targetFileName])
+  private var uniqueTargetPath: String {
+    var uniqueTargetPath = String.path(from: [targetFolder, targetFileName])
+
+    // Add .2 to the name until it is unique
+    while FileManager.default.fileExists(atPath: uniqueTargetPath) {
+      let fileName = URL(fileURLWithPath: uniqueTargetPath).deletingPathExtension().lastPathComponent
+      let fileExtension = URL(fileURLWithPath: uniqueTargetPath).pathExtension
+      uniqueTargetPath = String.path(from: [targetFolder, "\(fileName).2.\(fileExtension)"])
+    }
+
+    return uniqueTargetPath
+  }
+
+  init(sourceFolder: String, targetFolder: String, fileName: String) {
+    self.sourceFolder = sourceFolder
+    self.sourceFileName = fileName
+    self.targetFolder = targetFolder
+    self.targetFileName = fileName
   }
 
   func doOperation() -> Bool {
-    let fileManager = FileManager.default
-
-    // Add .2 to the name until it is unique
-    while fileManager.fileExists(atPath: targetPath()) {
-
-      guard let fileName = NSURL(fileURLWithPath: targetPath()).deletingPathExtension?.lastPathComponent else {
-        self.state = OperationState.failed
-        return false
-      }
-
-      let fileExtension = URL(fileURLWithPath: targetPath()).pathExtension
-      targetFileName = "\(fileName).2.\(fileExtension)"
-    }
-
     do {
-      try fileManager.moveItem(atPath: sourcePath(), toPath: targetPath())
-      self.state = OperationState.done
+      try FileManager.default.moveItem(atPath: sourcePath, toPath: uniqueTargetPath)
+      state = OperationState.done
       return true
     } catch let error as NSError {
       print("Error: \(error.localizedDescription)")
-      self.state = OperationState.failed
+      state = OperationState.failed
       return false
     }
   }

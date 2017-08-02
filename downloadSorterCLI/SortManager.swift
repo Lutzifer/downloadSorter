@@ -169,18 +169,16 @@ class SortManager {
       }
 
       if !fileManager.fileExists(atPath: targetFolder) {
-        let directoryOperation = MakeDirectoriesOperation()
-        directoryOperation.directoryPath = targetFolder
-        operationList.append(directoryOperation)
+        operationList.append(MakeDirectoriesOperation(directoryPath: targetFolder))
       }
 
-      let moveOperation = MoveOperation()
       let fileName = path.replacingOccurrences(of: sourcePath, with: "", options: [], range: nil)
 
-      moveOperation.sourceFolder = sourcePath
-      moveOperation.sourceFileName = fileName
-      moveOperation.targetFolder = targetFolder
-      moveOperation.targetFileName = fileName
+      let moveOperation = MoveOperation(
+        sourceFolder: sourcePath,
+        targetFolder: targetFolder,
+        fileName: fileName
+      )
 
       operationList.append(moveOperation)
     }

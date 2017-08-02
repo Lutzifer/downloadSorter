@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		843A5C661F31BA100017552A /* AttributeExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A5C651F31BA100017552A /* AttributeExtractor.swift */; };
+		8446713D1F31EAA000F4D92B /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446713C1F31EAA000F4D92B /* String+Path.swift */; };
 		849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
 		84BC13D61EB50A8D0078533E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93285BFB1BC2F80B00E9B88D /* main.swift */; };
 		84F0224F1F2F2013004C42B6 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0224D1F2F1FCA004C42B6 /* CommandLine.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		843A5C651F31BA100017552A /* AttributeExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeExtractor.swift; sourceTree = "<group>"; };
+		8446713C1F31EAA000F4D92B /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		849BA6931BE51DC5001B3CE5 /* TLDList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDList.swift; sourceTree = "<group>"; };
 		84F0224B1F2F1F23004C42B6 /* BuildScripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BuildScripts; sourceTree = "<group>"; };
 		84F0224C1F2F1FCA004C42B6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Dependencies/CommandLine/StringExtensions.swift; sourceTree = SOURCE_ROOT; };
@@ -73,6 +75,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		8446713B1F31EA8C00F4D92B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8446713C1F31EAA000F4D92B /* String+Path.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		84BC13D71EB50AA30078533E /* CommandLineSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 		93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */ = {
 			isa = PBXGroup;
 			children = (
+				8446713B1F31EA8C00F4D92B /* Extensions */,
 				843A5C671F31CA900017552A /* Protocols */,
 				84F022531F2F213B004C42B6 /* Utils */,
 				93B904DF1AEFFEDC00BCD362 /* FileOperations */,
@@ -246,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */,
+				8446713D1F31EAA000F4D92B /* String+Path.swift in Sources */,
 				93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */,
 				84F022511F2F2013004C42B6 /* StringExtensions.swift in Sources */,
 				93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */,
