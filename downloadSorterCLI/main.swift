@@ -13,13 +13,13 @@ let cli = CommandLine()
 let sourcePathOption = StringOption(
   shortFlag: "s",
   longFlag: "sourcepath",
-  helpMessage: "Path to the Folder which contains the files to process."
+  helpMessage: "Path to the folder which contains the files to process."
 )
 
 let destinationPathOption = StringOption(
   shortFlag: "t",
   longFlag: "targetpath",
-  helpMessage: "Path to the Folder which where the files are processed to. "
+  helpMessage: "Path to the folder to which the files are processed to. "
     + "If not given, the sourcepath is used."
 )
 
@@ -32,7 +32,7 @@ let helpOption = BoolOption(
 let dryrunOption = BoolOption(
   shortFlag: "d",
   longFlag: "dry-run",
-  helpMessage: "Print what will happen instead of doing it."
+  helpMessage: "Print what will happen instead of actually doing it."
 )
 
 let urlDepthOption = IntOption(
