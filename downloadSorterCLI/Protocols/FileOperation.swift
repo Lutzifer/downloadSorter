@@ -15,12 +15,9 @@ enum OperationState {
   case failed
 }
 
-class FileOperation: NSObject {
-  var state: OperationState = OperationState.todo
+protocol FileOperation: CustomStringConvertible {
+  var state: OperationState { get set }
 
-  func doOperation() -> Bool { return false }
-
-  func undoOperation() -> Bool { return false }
-
-  func describe() -> String { return "undefined" }
+  func doOperation() -> Bool
+  func undoOperation() -> Bool
 }

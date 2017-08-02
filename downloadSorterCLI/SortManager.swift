@@ -187,7 +187,7 @@ class SortManager {
 
     var result = ""
     for fileOperation in operationList {
-      result += "\n" + fileOperation.describe()
+      result += "\n" + fileOperation.description
     }
 
     if result == "" {

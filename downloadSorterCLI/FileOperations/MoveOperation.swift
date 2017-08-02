@@ -9,6 +9,12 @@
 import Foundation
 
 class MoveOperation: FileOperation {
+  var state: OperationState = .todo
+
+  var description: String {
+    return "Will move \(sourcePath()) to \(targetPath())."
+  }
+
   var sourceFolder: String = ""
   var sourceFileName: String = ""
   var targetFolder: String = ""
@@ -22,11 +28,7 @@ class MoveOperation: FileOperation {
     return NSString.path(withComponents: [targetFolder, targetFileName])
   }
 
-  override func describe() -> String {
-    return "Will move \(sourcePath()) to \(targetPath())."
-  }
-
-  override func doOperation() -> Bool {
+  func doOperation() -> Bool {
     let fileManager = FileManager.default
 
     // Add .2 to the name until it is unique
@@ -52,7 +54,7 @@ class MoveOperation: FileOperation {
     }
   }
 
-  override func undoOperation() -> Bool {
+  func undoOperation() -> Bool {
     let fileManager = FileManager.default
     var error: NSError?
 

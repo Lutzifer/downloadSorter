@@ -9,11 +9,14 @@
 import Cocoa
 
 class MakeDirectoriesOperation: FileOperation {
+  var state: OperationState = .todo
   var directoryPath: String = ""
 
-  override func describe() -> String { return "Will create directory \(directoryPath)" }
+  var description: String {
+    return "Will create directory \(directoryPath)"
+  }
 
-  override func doOperation() -> Bool {
+  func doOperation() -> Bool {
     // create all Directories needed
     let fileManager = FileManager.default
 
@@ -28,7 +31,7 @@ class MakeDirectoriesOperation: FileOperation {
     }
   }
 
-  override func undoOperation() -> Bool {
+  func undoOperation() -> Bool {
     let fileManager = FileManager.default
     // Delete Directories, if they are empty
 

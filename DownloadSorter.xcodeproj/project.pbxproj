@@ -65,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		843A5C671F31CA900017552A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				93B904E11AEFFEEC00BCD362 /* FileOperation.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		84BC13D71EB50AA30078533E /* CommandLineSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,13 +81,6 @@
 				84F0224C1F2F1FCA004C42B6 /* StringExtensions.swift */,
 			);
 			path = CommandLineSwift;
-			sourceTree = "<group>";
-		};
-		84F022521F2F212E004C42B6 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		84F022531F2F213B004C42B6 /* Utils */ = {
@@ -94,8 +95,8 @@
 		93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */ = {
 			isa = PBXGroup;
 			children = (
+				843A5C671F31CA900017552A /* Protocols */,
 				84F022531F2F213B004C42B6 /* Utils */,
-				84F022521F2F212E004C42B6 /* Supporting Files */,
 				93B904DF1AEFFEDC00BCD362 /* FileOperations */,
 				93B904D81AEFFB5D00BCD362 /* SortManager.swift */,
 				93285BFB1BC2F80B00E9B88D /* main.swift */,
@@ -272,7 +273,7 @@
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "downloadSorterCLI/DownloadSorter-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
