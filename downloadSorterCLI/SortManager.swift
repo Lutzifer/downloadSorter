@@ -55,18 +55,19 @@ struct SortManager {
   }
 
   func extractTargetFolder(_ input: [String]) -> String? {
-    guard let first = input.first, let last = input.last else {
+    guard let first = input.first else {
       return nil
     }
 
     if first.matchesRegex(.https) || first.matchesRegex(.ftps) {
       // get Host
-      for result in Array(input.reversed()) {
-        var resultArray = result.components(separatedBy: "/")
-
-        if resultArray.count > 2 {
-          var resultString: String = resultArray[2]
-
+      return input
+        .reversed()
+        .map { $0.components(separatedBy: "/") }
+        .filter { $0.count > 2 }
+        .map { stringArray -> String in stringArray[2] }
+        .map { string -> String in
+          var resultString = string
           // if URLDepth is set to value larger then 0, limit depth of hosts
           if self.urlDepth > 0 {
             var suffix: String?
@@ -94,18 +95,14 @@ struct SortManager {
             }
           }
 
-          if resultString != "" {
-            return resultString
-          }
+          return resultString
         }
-      }
-
-      return ""
+        .first(where: { $0 != "" })
     } else if first.matchesRegex(.email) {
       // Take first field (Full Name) for this
       return first.components(separatedBy: "<")[0]
     } else {
-      return last
+      return input.last
     }
   }
 
