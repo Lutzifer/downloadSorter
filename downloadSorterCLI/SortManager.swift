@@ -15,41 +15,42 @@ enum KindDetectorRegex: String {
 }
 
 class SortManager {
+  static let defaultUrlDepth: Int = 0
 
-  static let sharedInstance: SortManager = SortManager()
   var operationList: [FileOperation] = [FileOperation]()
 
-  var sourceFolder: String = ""
-  var targetFolder: String = ""
+  let sourceFolder: String
+  let targetFolder: String
+  let urlDepth: Int
 
-  var urlDepth: Int = 0
-
-  func getListOfFilesInFolder(_ path: String) -> [String] {
-    let fileManager = FileManager.default
-    var error: NSError?
-
-    var fileFolderList: [String]
-    do {
-      fileFolderList = try fileManager.contentsOfDirectory(atPath: path)
-    } catch let error1 as NSError {
-      error = error1
-      fileFolderList = []
+  init(sourceFolder: String?, targetFolder: String?, urlDepth: Int?) {
+    if sourceFolder == "." {
+      self.sourceFolder = FileManager.default.currentDirectoryPath
+    } else {
+      self.sourceFolder = sourceFolder ?? FileManager.default.currentDirectoryPath
     }
 
-    if error != nil {
-      print("Error: \(String(describing: error?.localizedDescription))")
-      return []
+    if targetFolder == "." {
+      self.targetFolder = FileManager.default.currentDirectoryPath
     } else {
-      var fileList = [String]()
-      for file in fileFolderList {
-        var isDirectory: ObjCBool = false
-        if fileManager.fileExists(atPath: "\(path)/\(file)", isDirectory: &isDirectory) {
-          if !isDirectory.boolValue {
-            fileList.append("\(path)/\(file)")
-          }
-        }
-      }
-      return fileList
+      self.targetFolder = targetFolder ?? sourceFolder ?? FileManager.default.currentDirectoryPath
+    }
+
+    if let urlDepth = urlDepth, urlDepth < 0 {
+      print("Negative value set for numDepth, resorting to default(\(SortManager.defaultUrlDepth))")
+      self.urlDepth = SortManager.defaultUrlDepth
+    } else {
+      self.urlDepth = urlDepth ?? SortManager.defaultUrlDepth
+    }
+  }
+
+  func getListOfFiles(at path: String) -> [String] {
+    return ((try? FileManager.default.contentsOfDirectory(atPath: path)) ?? [String]()).filter({
+      var isDirectory: ObjCBool = false
+      return FileManager.default.fileExists(atPath: "\(path)/\($0)", isDirectory: &isDirectory)
+        && !isDirectory.boolValue
+    }).map {
+      path.appending("/").appending($0)
     }
   }
 
@@ -144,7 +145,7 @@ class SortManager {
     // Reset Operation List
     self.operationList = [FileOperation]()
 
-    var cleanFileList: [String] = filterRunningDownloads(getListOfFilesInFolder(sourcePath))
+    var cleanFileList: [String] = filterRunningDownloads(getListOfFiles(at: sourcePath))
 
     // Filter dot files
     cleanFileList = cleanFileList.filter({ (filePath: String) -> Bool in
@@ -152,37 +153,36 @@ class SortManager {
       return !fileName.hasPrefix(".")
     })
 
-    for file in cleanFileList {
-      if let whereFroms = AttributeExtractor.getWhereFrom(forPath: file) as [String]? {
+    for path in cleanFileList {
+      let whereFroms = AttributeExtractor.getWhereFromsFromFile(at: path)
 
-        let fileManager = FileManager.default
+      let fileManager = FileManager.default
 
-        var targetFolder: String
+      var targetFolder: String
 
-        if !whereFroms.isEmpty,
-          let extractedFolder = extractTargetFolder(whereFroms) {
-          let trimmedExtractedFolder = extractedFolder.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-          targetFolder = "\(targetPath)/\(trimmedExtractedFolder)"
-        } else {
-          targetFolder = "Unknown Source"
-        }
-
-        if !fileManager.fileExists(atPath: targetFolder) {
-          let directoryOperation = MakeDirectoriesOperation()
-          directoryOperation.directoryPath = targetFolder
-          operationList.append(directoryOperation)
-        }
-
-        let moveOperation = MoveOperation()
-        let fileName = file.replacingOccurrences(of: sourcePath, with: "", options: [], range: nil)
-
-        moveOperation.sourceFolder = sourcePath
-        moveOperation.sourceFileName = fileName
-        moveOperation.targetFolder = targetFolder
-        moveOperation.targetFileName = fileName
-
-        operationList.append(moveOperation)
+      if !whereFroms.isEmpty,
+        let extractedFolder = extractTargetFolder(whereFroms) {
+        let trimmedExtractedFolder = extractedFolder.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        targetFolder = "\(targetPath)/\(trimmedExtractedFolder)"
+      } else {
+        targetFolder = "Unknown Source"
       }
+
+      if !fileManager.fileExists(atPath: targetFolder) {
+        let directoryOperation = MakeDirectoriesOperation()
+        directoryOperation.directoryPath = targetFolder
+        operationList.append(directoryOperation)
+      }
+
+      let moveOperation = MoveOperation()
+      let fileName = path.replacingOccurrences(of: sourcePath, with: "", options: [], range: nil)
+
+      moveOperation.sourceFolder = sourcePath
+      moveOperation.sourceFileName = fileName
+      moveOperation.targetFolder = targetFolder
+      moveOperation.targetFileName = fileName
+
+      operationList.append(moveOperation)
     }
 
     var result = ""
