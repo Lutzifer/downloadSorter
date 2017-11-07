@@ -9,51 +9,30 @@
 import Cocoa
 
 class MakeDirectoriesOperation: FileOperation {
-	var directoryPath: String = ""
+  var state: OperationState = .todo
+  let directoryPath: String
 
-	override func describe() -> String { return "Will create directory \(directoryPath)" }
+  var description: String {
+    return "Will create directory \(directoryPath)"
+  }
 
-	override func doOperation() -> Bool {
-		// create all Directories needed
-		let fileManager = FileManager.default
+  init(directoryPath: String) {
+    self.directoryPath = directoryPath
+  }
 
-		do {
-			try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
-			self.state = OperationState.done
-			return true
-		} catch let error as NSError {
-			print("Error: \(error.localizedDescription)")
-			self.state = OperationState.failed
-			return false
-		}
-	}
-
-	override func undoOperation() -> Bool {
-		let fileManager = FileManager.default
-		// Delete Directories, if they are empty
-
-		var isEmpty = false
-		var path = URL(fileURLWithPath: directoryPath)
-
-		repeat {
-			isEmpty = (try? fileManager.contentsOfDirectory(atPath: path.absoluteString))?.isEmpty ?? false
-
-			if isEmpty {
-				print("Remove Directory \(path)")
-				do {
-					try fileManager.removeItem(atPath: path.absoluteString)
-					// remove last dir for next round
-					path = path.deletingLastPathComponent()
-				} catch let error as NSError {
-					print("Error: \(error.localizedDescription)")
-					self.state = OperationState.failed
-					return false
-				}
-
-			}
-		} while(isEmpty)
-
-		self.state = OperationState.undone
-		return true
-	}
+  // create all Directories needed
+  func doOperation() -> Bool {
+    do {
+      try FileManager.default.createDirectory(
+        atPath: directoryPath,
+        withIntermediateDirectories: true
+      )
+      self.state = OperationState.done
+      return true
+    } catch let error as NSError {
+      print("Error: \(error.localizedDescription)")
+      self.state = OperationState.failed
+      return false
+    }
+  }
 }

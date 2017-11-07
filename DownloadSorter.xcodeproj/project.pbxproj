@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843A5C661F31BA100017552A /* FileManager+AttributeExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A5C651F31BA100017552A /* FileManager+AttributeExtractor.swift */; };
+		8446713D1F31EAA000F4D92B /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446713C1F31EAA000F4D92B /* String+Path.swift */; };
 		849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BA6931BE51DC5001B3CE5 /* TLDList.swift */; };
-		84BC13D31EB50A8A0078533E /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D01EB50A8A0078533E /* CommandLine.swift */; };
-		84BC13D41EB50A8A0078533E /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D11EB50A8A0078533E /* Option.swift */; };
-		84BC13D51EB50A8A0078533E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC13D21EB50A8A0078533E /* StringExtensions.swift */; };
 		84BC13D61EB50A8D0078533E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93285BFB1BC2F80B00E9B88D /* main.swift */; };
+		84F0224F1F2F2013004C42B6 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0224D1F2F1FCA004C42B6 /* CommandLine.swift */; };
+		84F022501F2F2013004C42B6 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0224E1F2F1FCA004C42B6 /* Option.swift */; };
+		84F022511F2F2013004C42B6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0224C1F2F1FCA004C42B6 /* StringExtensions.swift */; };
 		93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */; };
 		93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E11AEFFEEC00BCD362 /* FileOperation.swift */; };
 		93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */; };
-		93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */; };
 		9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B904D81AEFFB5D00BCD362 /* SortManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,17 +33,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		843A5C651F31BA100017552A /* FileManager+AttributeExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+AttributeExtractor.swift"; sourceTree = "<group>"; };
+		8446713C1F31EAA000F4D92B /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		849BA6931BE51DC5001B3CE5 /* TLDList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDList.swift; sourceTree = "<group>"; };
-		84BC13D01EB50A8A0078533E /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
-		84BC13D11EB50A8A0078533E /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
-		84BC13D21EB50A8A0078533E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		84F0224B1F2F1F23004C42B6 /* BuildScripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BuildScripts; sourceTree = "<group>"; };
+		84F0224C1F2F1FCA004C42B6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Dependencies/CommandLine/StringExtensions.swift; sourceTree = SOURCE_ROOT; };
+		84F0224D1F2F1FCA004C42B6 /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommandLine.swift; path = Dependencies/CommandLine/CommandLine.swift; sourceTree = SOURCE_ROOT; };
+		84F0224E1F2F1FCA004C42B6 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Option.swift; path = Dependencies/CommandLine/Option.swift; sourceTree = SOURCE_ROOT; };
 		93285BF91BC2F80B00E9B88D /* downloadSorter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = downloadSorter; sourceTree = BUILT_PRODUCTS_DIR; };
 		93285BFB1BC2F80B00E9B88D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DownloadSorter-Bridging-Header.h"; sourceTree = "<group>"; };
 		93B904C81AEFFB2100BCD362 /* DownloadSorter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DownloadSorter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B904D81AEFFB5D00BCD362 /* SortManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortManager.swift; sourceTree = "<group>"; };
-		93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeExtractor.h; sourceTree = "<group>"; };
-		93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeExtractor.m; sourceTree = "<group>"; };
 		93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveOperation.swift; sourceTree = "<group>"; };
 		93B904E11AEFFEEC00BCD362 /* FileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileOperation.swift; sourceTree = "<group>"; };
 		93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDirectoriesOperation.swift; sourceTree = "<group>"; };
@@ -66,25 +67,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		843A5C671F31CA900017552A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				93B904E11AEFFEEC00BCD362 /* FileOperation.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8446713B1F31EA8C00F4D92B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8446713C1F31EAA000F4D92B /* String+Path.swift */,
+				843A5C651F31BA100017552A /* FileManager+AttributeExtractor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		84BC13D71EB50AA30078533E /* CommandLineSwift */ = {
 			isa = PBXGroup;
 			children = (
-				84BC13D01EB50A8A0078533E /* CommandLine.swift */,
-				84BC13D11EB50A8A0078533E /* Option.swift */,
-				84BC13D21EB50A8A0078533E /* StringExtensions.swift */,
+				84F0224D1F2F1FCA004C42B6 /* CommandLine.swift */,
+				84F0224E1F2F1FCA004C42B6 /* Option.swift */,
+				84F0224C1F2F1FCA004C42B6 /* StringExtensions.swift */,
 			);
 			path = CommandLineSwift;
+			sourceTree = "<group>";
+		};
+		84F022531F2F213B004C42B6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				849BA6931BE51DC5001B3CE5 /* TLDList.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */ = {
 			isa = PBXGroup;
 			children = (
+				8446713B1F31EA8C00F4D92B /* Extensions */,
+				843A5C671F31CA900017552A /* Protocols */,
+				84F022531F2F213B004C42B6 /* Utils */,
 				93B904DF1AEFFEDC00BCD362 /* FileOperations */,
-				93B904DC1AEFFEB500BCD362 /* AttributeExtractor.h */,
-				93B904DD1AEFFEB500BCD362 /* AttributeExtractor.m */,
-				9375B8221BC3055300C0FD2F /* DownloadSorter-Bridging-Header.h */,
 				93B904D81AEFFB5D00BCD362 /* SortManager.swift */,
-				849BA6931BE51DC5001B3CE5 /* TLDList.swift */,
 				93285BFB1BC2F80B00E9B88D /* main.swift */,
 			);
 			path = downloadSorterCLI;
@@ -93,11 +118,14 @@
 		93B904AD1AEFFB2100BCD362 = {
 			isa = PBXGroup;
 			children = (
+				84F0224B1F2F1F23004C42B6 /* BuildScripts */,
 				84BC13D71EB50AA30078533E /* CommandLineSwift */,
 				93B904B71AEFFB2100BCD362 /* Products */,
 				93285BFA1BC2F80B00E9B88D /* downloadSorterCLI */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		93B904B71AEFFB2100BCD362 /* Products */ = {
 			isa = PBXGroup;
@@ -111,7 +139,6 @@
 		93B904DF1AEFFEDC00BCD362 /* FileOperations */ = {
 			isa = PBXGroup;
 			children = (
-				93B904E11AEFFEEC00BCD362 /* FileOperation.swift */,
 				93B904E21AEFFEEC00BCD362 /* MakeDirectoriesOperation.swift */,
 				93B904E01AEFFEEC00BCD362 /* MoveOperation.swift */,
 			);
@@ -125,8 +152,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93285BFF1BC2F80B00E9B88D /* Build configuration list for PBXNativeTarget "downloadSorter" */;
 			buildPhases = (
-				84BC13D91EB50B1F0078533E /* Swimat */,
-				84BC13D81EB50B1E0078533E /* Swiftlint */,
+				84BC13D91EB50B1F0078533E /* PreCompile */,
 				93285BF51BC2F80B00E9B88D /* Sources */,
 				93285BF61BC2F80B00E9B88D /* Frameworks */,
 				93285BF71BC2F80B00E9B88D /* CopyFiles */,
@@ -165,12 +191,12 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Number 42";
 				TargetAttributes = {
 					93285BF81BC2F80B00E9B88D = {
 						CreatedOnToolsVersion = 7.0.1;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 					};
 					93B904C71AEFFB2100BCD362 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -209,33 +235,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		84BC13D81EB50B1E0078533E /* Swiftlint */ = {
+		84BC13D91EB50B1F0078533E /* PreCompile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = PreCompile;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		84BC13D91EB50B1F0078533E /* Swimat */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Swimat;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swimat >/dev/null; then\nswimat -r downloadSorterCLI\nelse\necho \"warning: Swimat not installed, download from https://github.com/Jintin/Swimat or install with 'brew install swimat'\"\nfi";
+			shellScript = "sh \"${SRCROOT}/BuildScripts/Phases/CLIPreCompile.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -244,16 +256,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84BC13D41EB50A8A0078533E /* Option.swift in Sources */,
 				93285C011BC2F85D00E9B88D /* MoveOperation.swift in Sources */,
+				8446713D1F31EAA000F4D92B /* String+Path.swift in Sources */,
 				93285C031BC2F86300E9B88D /* MakeDirectoriesOperation.swift in Sources */,
-				84BC13D51EB50A8A0078533E /* StringExtensions.swift in Sources */,
+				84F022511F2F2013004C42B6 /* StringExtensions.swift in Sources */,
 				93285C021BC2F86000E9B88D /* FileOperation.swift in Sources */,
+				84F0224F1F2F2013004C42B6 /* CommandLine.swift in Sources */,
 				9375B81A1BC2FEF000C0FD2F /* SortManager.swift in Sources */,
 				84BC13D61EB50A8D0078533E /* main.swift in Sources */,
+				843A5C661F31BA100017552A /* FileManager+AttributeExtractor.swift in Sources */,
 				849BA6951BE51DC5001B3CE5 /* TLDList.swift in Sources */,
-				84BC13D31EB50A8A0078533E /* CommandLine.swift in Sources */,
-				93285C041BC2F86F00E9B88D /* AttributeExtractor.m in Sources */,
+				84F022501F2F2013004C42B6 /* Option.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,8 +285,9 @@
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "downloadSorterCLI/DownloadSorter-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -281,8 +295,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "downloadSorterCLI/DownloadSorter-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -294,14 +309,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -341,14 +362,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
