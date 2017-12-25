@@ -67,32 +67,32 @@ struct SortManager {
         .filter { $0.count > 2 }
         .map { stringArray -> String in stringArray[2] }
         .map { string -> String in
-          var resultString = string
+          let resultString: String
+
           // if URLDepth is set to value larger then 0, limit depth of hosts
           if self.urlDepth > 0 {
-            var suffix: String?
-
             // replace multipart TLD with a singlePartTLD
-            for tld in TLDList.multiPartTLDs() {
-              if resultString.hasSuffix(".\(tld)") {
-                suffix = tld
-                let suffixLength = suffix!.characters.count + 1 // (+1 to include dot)
-                let endIndex = resultString.characters.index(resultString.endIndex, offsetBy: -suffixLength)
-                let prefix = resultString.substring(with: resultString.startIndex ..< endIndex)
-                resultString = [prefix, "suffix"].joined(separator: ".")
-                break
-              }
-            }
+            if let tld = TLDList.multiPartTLDs().first(where: {
+              string.hasSuffix(".\($0)")
+            }) {
 
-            resultString = resultString.components(separatedBy: ".").suffix(self.urlDepth).joined(separator: ".")
+              let prefix = string.prefix(string.count - tld.count - 1) // (-1 to include dot))
+              // replace singlepart TLD with multipart TLD again after applying urldepth
+              var components = [String](
+                prefix
+                  .components(separatedBy: ".")
+                  .suffix(self.urlDepth - 1)
+              )
 
-            // replace singlepart TLD with multipart TLD
-            if let realSuffix = suffix {
-              var strings = resultString.components(separatedBy: ".")
-              strings.removeLast()
-              strings.append(realSuffix)
-              resultString = strings.joined(separator: ".")
+              components.append(tld)
+
+              resultString = components.joined(separator: ".")
+
+            } else {
+              resultString = string.components(separatedBy: ".").suffix(self.urlDepth).joined(separator: ".")
             }
+          } else {
+            resultString = string
           }
 
           return resultString
