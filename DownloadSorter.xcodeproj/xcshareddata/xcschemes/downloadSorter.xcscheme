@@ -69,12 +69,12 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "&quot;/Users/admin/Downloads/Neuer Ordner mit Objekten&quot;"
+            argument = "&quot;/Users/Admin/Downloads&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-d"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
