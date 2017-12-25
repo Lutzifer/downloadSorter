@@ -59,7 +59,7 @@ struct SortManager {
       return nil
     }
 
-    if first.matchesRegex(.https) || first.matchesRegex(.ftps) {
+    if first.matches(.https) || first.matches(.ftps) {
       // get Host
       return input
         .reversed()
@@ -98,7 +98,7 @@ struct SortManager {
           return resultString
         }
         .first(where: { $0 != "" })
-    } else if first.matchesRegex(.email) {
+    } else if first.matches(.email) {
       // Take first field (Full Name) for this
       return first.components(separatedBy: "<")[0]
     } else {
@@ -183,8 +183,7 @@ struct SortManager {
 }
 
 extension String {
-  func matchesRegex(_ regex: KindDetectorRegex) -> Bool {
-    let predicate: NSPredicate = NSPredicate(format: "SELF MATCHES '\(regex)'")
-    return predicate.evaluate(with: self)
+  func matches(_ regex: KindDetectorRegex) -> Bool {
+    return self.range(of: regex.rawValue, options: .regularExpression, range: nil, locale: nil) != nil
   }
 }
