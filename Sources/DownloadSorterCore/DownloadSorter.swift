@@ -1,6 +1,5 @@
 //
-//  SortManager.swift
-//  DownloadSorterGUI
+//  DownloadSorter.swift
 //
 //  Created by Wolfgang Lutz on 28.04.15.
 //  Copyright (c) 2015 Wolfgang Lutz. All rights reserved.
@@ -14,14 +13,14 @@ enum KindDetectorRegex: String {
   case email = ".*<.*@.*>.*"
 }
 
-struct SortManager {
+public struct DownloadSorter {
   static let defaultUrlDepth: Int = 0
 
   let sourceFolder: String
   let targetFolder: String
   let urlDepth: Int
 
-  init(sourceFolder: String?, targetFolder: String?, urlDepth: Int?) {
+  public init(sourceFolder: String?, targetFolder: String?, urlDepth: Int?) {
     if sourceFolder == "." {
       self.sourceFolder = FileManager.default.currentDirectoryPath
     } else {
@@ -35,10 +34,10 @@ struct SortManager {
     }
 
     if let urlDepth = urlDepth, urlDepth < 0 {
-      print("Negative value set for numDepth, resorting to default(\(SortManager.defaultUrlDepth))")
-      self.urlDepth = SortManager.defaultUrlDepth
+      print("Negative value set for numDepth, resorting to default(\(DownloadSorter.defaultUrlDepth))")
+      self.urlDepth = DownloadSorter.defaultUrlDepth
     } else {
-      self.urlDepth = urlDepth ?? SortManager.defaultUrlDepth
+      self.urlDepth = urlDepth ?? DownloadSorter.defaultUrlDepth
     }
   }
 
@@ -159,7 +158,7 @@ struct SortManager {
       }
   }
 
-  func analyze() -> String {
+  public func analyze() -> String {
     let result =
       operations
       .map { $0.description }
@@ -172,7 +171,7 @@ struct SortManager {
     }
   }
 
-  func doOperations() -> String {
+  public func doOperations() -> String {
     return operations
       .filter {
         $0.state == OperationState.todo

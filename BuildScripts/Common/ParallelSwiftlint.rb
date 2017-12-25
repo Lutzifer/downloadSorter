@@ -42,7 +42,7 @@ end
 
 # Here begins the actual script
 
-input_files = %x(find . | grep .swift$ | grep -v ./Carthage | grep -v ./fastlane | grep -v ./Pods | grep -v ./Dependencies | grep -v ./GeneratedCode ).split("\n").shuffle()
+input_files = %x(find . | grep .swift$ | grep -v ./Carthage | grep -v ./fastlane | grep -v ./Pods | grep -v ./.build | grep -v ./GeneratedCode ).split("\n").shuffle()
 
 hash = {}
 threads = []

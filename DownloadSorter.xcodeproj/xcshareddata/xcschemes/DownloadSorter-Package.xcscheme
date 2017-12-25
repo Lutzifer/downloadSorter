@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "9999"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,37 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "93285BF81BC2F80B00E9B88D"
-               BuildableName = "downloadSorter"
-               BlueprintName = "downloadSorter"
+               BlueprintIdentifier = "DownloadSorter::DownloadSorter"
+               BuildableName = "DownloadSorter"
+               BlueprintName = "DownloadSorter"
+               ReferencedContainer = "container:DownloadSorter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Commander::Commander"
+               BuildableName = "Commander.framework"
+               BlueprintName = "Commander"
+               ReferencedContainer = "container:DownloadSorter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DownloadSorter::DownloadSorterCore"
+               BuildableName = "DownloadSorterCore.framework"
+               BlueprintName = "DownloadSorterCore"
                ReferencedContainer = "container:DownloadSorter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,16 +57,17 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DownloadSorter::DownloadSorterTests"
+               BuildableName = "DownloadSorterTests.xctest"
+               BlueprintName = "DownloadSorterTests"
+               ReferencedContainer = "container:DownloadSorter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "93285BF81BC2F80B00E9B88D"
-            BuildableName = "downloadSorter"
-            BlueprintName = "downloadSorter"
-            ReferencedContainer = "container:DownloadSorter.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -53,30 +82,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "93285BF81BC2F80B00E9B88D"
-            BuildableName = "downloadSorter"
-            BlueprintName = "downloadSorter"
+            BlueprintIdentifier = "DownloadSorter::DownloadSorter"
+            BuildableName = "DownloadSorter"
+            BlueprintName = "DownloadSorter"
             ReferencedContainer = "container:DownloadSorter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-s"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "&quot;/Users/Admin/Downloads&quot;"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-d"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -86,16 +100,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "93285BF81BC2F80B00E9B88D"
-            BuildableName = "downloadSorter"
-            BlueprintName = "downloadSorter"
-            ReferencedContainer = "container:DownloadSorter.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

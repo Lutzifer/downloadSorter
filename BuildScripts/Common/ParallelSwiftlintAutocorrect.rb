@@ -36,7 +36,7 @@ end
 
 # Here begins the actual script
 
-input_files = %x(find . | grep .swift$ | grep -v ./Carthage | grep -v ./fastlane | grep -v ./GeneratedCode | grep -v ./Dependencies ).split("\n")
+input_files = %x(find . | grep .swift$ | grep -v ./Carthage | grep -v ./fastlane | grep -v ./GeneratedCode | grep -v ./.build ).split("\n")
 
 hash = {}
 threads = []
