@@ -69,7 +69,7 @@ command(
     default: 0,
     description: """
        Limits the depth of urls. A value of 2 would shorten www.example.com to example.com.
-       Default is 0 (no limit). Negative values are interpreted as 0.
+       Default is 0 (no limit).
     """
   ),
   Flag(
